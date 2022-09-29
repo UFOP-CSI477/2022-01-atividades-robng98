@@ -3,11 +3,11 @@
 
 ## Atualize os seus dados
 
-- Nome:
-- Matrícula:
-- Curso:
-- Semestre/Ano correntes:
-- Link para o seu GitHub:
+- Nome: Roberto Nicácio Guimarães
+- Matrícula: 19.1.8013
+- Curso: Engenharia da Computação
+- Semestre/Ano correntes: 2022/1
+- Link para o seu GitHub: [https://github.com/robng98](https://github.com/robng98)
 
 ## [Projeto final:](./Projeto/README.md)
 
