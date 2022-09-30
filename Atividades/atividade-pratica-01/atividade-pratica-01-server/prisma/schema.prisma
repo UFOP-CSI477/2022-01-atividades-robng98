@@ -9,3 +9,63 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Pessoa {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  rua         String
+  numero      String
+  complemento String
+  documento   String
+  cidade_id   Int
+  tipo_id     Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+
+  doacao Doacao[]
+
+  tipo_sanguineo Tipo_Sanguineo @relation(fields: [tipo_id], references: [id])
+
+  @@map("pessoas")
+}
+
+model Tipo_Sanguineo {
+  id         Int      @id @default(autoincrement())
+  tipo       String
+  fator      String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  pessoa Pessoa[]
+
+  @@map("tipos_sanguineos")
+}
+
+model Local_Coleta {
+  id          Int    @id @default(autoincrement())
+  nome        String
+  rua         String
+  numero      String
+  complemento String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  doacao Doacao[]
+
+  @@map("locais_coleta")
+}
+
+model Doacao {
+  id         Int      @id @default(autoincrement())
+  pessoa_id  Int
+  local_id   Int
+  data       DateTime @default(now())
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  pessoa       Pessoa       @relation(fields: [pessoa_id], references: [id])
+  local_coleta Local_Coleta @relation(fields: [local_id], references: [id])
+
+  @@map("doacoes")
+}
