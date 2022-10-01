@@ -17,7 +17,6 @@ model Pessoa {
   numero      String
   complemento String
   documento   String
-  cidade_id   Int
   tipo_id     Int
   created_at  DateTime @default(now())
   updated_at  DateTime @default(now())
