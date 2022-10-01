@@ -7,7 +7,7 @@ import { doacaoRouter } from './routes/doacao.js';
 
 import cors from 'cors';
 
-const PORT = 4001; //process.env.PORT;
+const PORT = 4001;
 
 const app = express();
 
@@ -19,7 +19,6 @@ app.use(tipo_SanguineoRouter);
 app.use(local_ColetaRouter);
 app.use(pessoaRouter);
 app.use(doacaoRouter);
-// app.use(cidadeRouter);
 
 app.listen(PORT, () =>{
     console.log(`[SERVER] Server is running on port ${PORT}`);
