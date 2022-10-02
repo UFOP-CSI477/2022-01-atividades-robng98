@@ -20,6 +20,6 @@ app.use(local_ColetaRouter);
 app.use(pessoaRouter);
 app.use(doacaoRouter);
 
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
     console.log(`[SERVER] Server is running on port ${PORT}`);
 })
