@@ -112,9 +112,31 @@ export interface TankobonModel {
 //Tela Inicial
 
 export interface SelecaoRecentesModel {
-	capa: string,
-	nome: string,
-	vol: number,
-	num: string,
-	top_recentes: string
+    capa: string,
+    nome: string,
+    vol: number,
+    num: string,
+    top_recentes: string
+}
+
+// Resultados
+
+// export interface ResComicMangaModel {
+//     nome: string,
+//     vol: number,
+//     num_edicoes: string,
+//     ano_pub: string,
+//     editora: string
+// }
+
+export interface ResComicMangaModel {
+
+    nome: string,
+    nome_jap: string,
+    vol: number,
+    num_edicoes: string,
+    num_tankos: string,
+    ano_pub: string,
+    editora: string,
+    demografia: string
 }
