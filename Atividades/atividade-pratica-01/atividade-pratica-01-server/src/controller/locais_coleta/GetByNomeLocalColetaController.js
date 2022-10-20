@@ -8,9 +8,6 @@ export class GetByNomeLocalColetaController {
         const local_Coleta = await prismaClient.local_Coleta.findMany({
             where: {
                 nome: nome
-            },
-            include:{
-                doacao: true
             }
         });
 
