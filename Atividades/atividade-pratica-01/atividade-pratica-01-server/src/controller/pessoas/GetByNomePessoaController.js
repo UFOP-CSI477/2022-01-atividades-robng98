@@ -11,7 +11,7 @@ export class GetByNomePessoaController {
                 nome: nome
             },
             include:{
-                doacao: true
+                tipo_sanguineo: true
             }
         });
 

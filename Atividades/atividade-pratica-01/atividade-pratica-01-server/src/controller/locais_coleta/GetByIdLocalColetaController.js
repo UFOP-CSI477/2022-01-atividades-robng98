@@ -1,18 +1,18 @@
-import { prismaClient} from '../../database/client.js'
+import { prismaClient } from '../../database/client.js'
 
 export class GetByIdLocalColetaController {
 
-    async handle(request, response){
+    async handle(request, response) {
 
-        const { id }= request.params;
+        const { id } = request.params;
         const local_Coleta = await prismaClient.local_Coleta.findUnique({
-            where:{
+            where: {
                 id: parseInt(id)
             },
-            include:{
-                doacao:true
+            include: {
+                doacao: true
             }
-            
+
         });
 
         return response.json(local_Coleta);

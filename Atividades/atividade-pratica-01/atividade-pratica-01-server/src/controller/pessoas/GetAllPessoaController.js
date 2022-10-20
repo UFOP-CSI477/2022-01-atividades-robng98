@@ -7,7 +7,7 @@ export class GetAllPessoaController {
 
         const pessoa = await prismaClient.pessoa.findMany({
             include: {
-                doacao: true
+                tipo_sanguineo: true
             }
         });
 

@@ -10,7 +10,7 @@ export class GetByIdPessoaController {
                 id: parseInt(id)
             },
             include:{
-                doacao: true
+                tipo_sanguineo: true
             }
 
         });
