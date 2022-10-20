@@ -5,11 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--cinza_escuro);
+  background-color: var(--cinza_escuro) !important;
   background-image: url("../public/logo2.svg");
   background-size: cover;
   background-blend-mode: multiply;
-  margin: 0;
+
 }
 
 code {
@@ -39,7 +39,7 @@ code {
 }
 
 tr {
-  display: flex; justify-content: space-evenly; background-color: var(--cinza_medio); border-style: none none none solid; border-color: var(--vermlar_claro); padding: 15px 0 25px 0;
+  display: flex; justify-content: space-evenly; background-color: var(--cinza_medio); border-style: none solid solid solid !important; padding: 1% 0 1% 0;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -124,14 +124,6 @@ tr {
   box-shadow: 0px 1.25px #414557;
 }
 
-header{
-  /* height: 10px; */
-  /* display: flex;
-  justify-content: space-between; */
-  background-color: var(--cinza_medio);
-  
-}
-
 .logo-esq{
   /* font-family: var(--font_fm);
   font-weight: bold;
@@ -172,7 +164,7 @@ header{
   color: var(--cinza_font);
   font-size: var(--font-sz-body);
   grid-column: 4/10;
-  border-radius: 20px;
+  border-radius: 10px;
   /* height: 600px; */
   margin-bottom: 10%;
   /* margin-left: 20%;
@@ -208,7 +200,7 @@ header{
   box-shadow: 2px 4px 4px black;
 }
 
-.texto-subtit{
+.texto_subtit{
 
   /* width: 82%; */
   /* background: var(--vermlar_escuro); */
@@ -227,7 +219,7 @@ header{
 
 .texto_busca{
 
-  width: 82%;
+  width: 60%;
   background: var(--cinza_medio);
   color: var(--cinza_font);
   height: 2.5rem;

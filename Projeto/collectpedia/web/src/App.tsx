@@ -1,89 +1,106 @@
 import React from 'react';
-import logo from './logo2.svg';
 import './App.css';
+import './index.css';
 import api from './services/api';
-import { Alert, Button } from 'react-bootstrap';
-
+import { SelecaoRecentesModel } from './models/Models';
 import { useState, useEffect } from "react";
+// import { Alert, Button } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
+// import logo from './logo2.svg';
 
-// function App() {
 const App = () => {
 
-  // const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const [nome, setNome] = useState('');
-  const [tipo, setTipo] = useState('Comic');
-
-
-  const handleBuscaSerie = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    // const tipo = event.target;
-
-    console.log(tipo)
-
-    // const data = {
-    //   nome: home-busca,
-    //   tipo: opc_busca
-    // }
-
-    // navigate(`/b_${tipo}/${nome}`);
-    // navigate()
+	const [busca, setBusca] = useState('');
+	const [tipo, setTipo] = useState('comic');
 
 
+	const [recentes, setRecentes] = useState<SelecaoRecentesModel[]>([]);
 
 
-  }
+	const handleBuscaSerie = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		navigate(`/b_${tipo}/${busca}`);
+	}
+
+	useEffect(() => {
+		api.get('/recentes').then(response => {
+			setRecentes(response.data.slice(1, 6));
+		});
+
+	}, []);
+
+	// console.log(recentes)
+	const un_mons = recentes.map(item => (
+		item.mon
+	))
+
+	const tipo_rec = un_mons.map((index) => {
+		if (un_mons[parseInt(index)] = 'USD')
+			return ('comic')
+		else {
+			if (un_mons[parseInt(index)] = 'YEN')
+				return ('manga')
+		}
+	})
+
+	console.log(recentes)
 
 
-  return (
-    <div className="App" >
+
+	return (
+		<div className="App" >
 
 
-      <div className="fundo-div-principal" style={{ gridRow: '3', gridColumn: '3/11', marginBottom: '10%', paddingBottom: '5%', marginTop: '10%' }}>
+			<div className="fundo-div-principal" style={{ gridRow: '3', gridColumn: '3/11', marginBottom: '3%' }}>
 
-        <form onSubmit={handleBuscaSerie}>
-          <div className="logotipo-home">
-            <img width="150" height="150" src="/logo2.svg" alt="" />
-            <a style={{ fontSize: 'var(--font-sz-maxx)', fontFamily: 'var(--font_logo)' }}>Collectpedia</a>
-          </div>
-          <p>
-            <select name="opc_busca" className="caixa-tp-busca" value={tipo} onChange={e => setTipo(e.target.value)}>
-              <option value="Comic">Comics</option>
-              <option value="Manga">Manga</option>
-            </select>
-          </p>
-          <p><input type="text" placeholder="Digite aqui" title="Buscar série" className="texto_busca" name="home-busca" required /></p>
+				<form onSubmit={handleBuscaSerie}>
+					<div className="logotipo-home">
 
-          <br /><br />
-          <button type="submit" className="bot-buscar-home">Enviar</button>
+						<img width="150" height="150" src="/logo2.svg" alt="" />
+						<h1 style={{ fontSize: 'var(--font-sz-maxx)', fontFamily: 'var(--font_logo)' }}>Collectpedia</h1>
+					</div>
+					<p>
+						<select name="opc_busca" className="caixa-tp-busca" value={tipo} onChange={e => setTipo(e.target.value)}>
+							<option value="comic">Comics</option>
+							<option value="manga">Manga</option>
+						</select>
+					</p>
+					<p><input type="text" placeholder="Digite aqui" title="Buscar série" className="texto_busca" name="home-busca" required value={busca} onChange={e => setBusca(e.target.value)} /></p>
 
-        </form>
-      </div>
+					<br /><br />
+					<button type="submit" className="bot-buscar-home">Enviar</button>
 
-      <div className="fundo-div-principal" style={{ paddingBottom: '5%', gridRow: '4', paddingTop: '0', display: 'grid', gridTemplateColumns: 'repeat(12,1fr)', gridTemplateRows: '1fr'}}>
+				</form>
+			</div>
+
+			<div className="fundo-div-principal" style={{ paddingBottom: '4%', marginBottom: '5%', gridRow: '5', paddingTop: '0', display: 'grid', gridTemplateColumns: 'repeat(12,1fr)', gridTemplateRows: '1fr' }}>
+
+				<div style={{ textAlign: 'start', gridRow: '1', gridColumn: '1/6', fontSize: '30px', fontWeight: '700', margin: '5% 0 2% 2%' }}>
+					<p>Lançamentos recentes</p>
+				</div>
+
+				<ul style={{ gridRow: '2', gridColumn: '1/13', display: 'flex', justifyContent: 'space-evenly', listStyleType: 'none', padding: '0' }}>
+					{recentes.map((item, index) => (
+						<li key={index}>
+							<Link to={`/${tipo_rec[index]}/${item.nome.replace(/ /g, '_')}/${item.vol}`}
+								state={{ nome: item.nome, editora: item.ed_nome }}>
+								<img width="150" height="230" src={item.capa} key={index}
+									alt={`${item.nome} vol ${item.vol} #${item.num}`} style={{ borderRadius: '8%' }} />
+							</Link>
+						</li>
+					))}
+
+				</ul>
+
+			</div>
 
 
-        <p>
-          <div style={{ textAlign: 'start', gridRow: '1', gridColumn: '1/6', fontSize: '30px', fontWeight: '700', margin: '0 0 5% 2%' }}>
-            <p>Lançamentos recentes</p>
-          </div>
-
-        </p>
-        <div style={{ gridRow: '2', gridColumn: '1/13', display: 'flex', justifyContent: 'space-evenly' }}>
-          {/* <a className="img_b">
-                  <img width="150" height="230" src="{{c1}}" style=" border-radius: 8%;"></a>
-                <a ><img width="150" height="230" src="{{c2}}" style="border-radius: 8%;"></a>
-                <a ><img width="150" height="230" src="{{c3}}" style="border-radius: 8%;"></a>
-                <a ><img width="150" height="230" src="{{c4}}" style="border-radius: 8%;"></a> */}
-        </div>
-
-      </div>
-
-
-    </div >
-  );
+		</div >
+	);
 }
+
 
 export default App;
