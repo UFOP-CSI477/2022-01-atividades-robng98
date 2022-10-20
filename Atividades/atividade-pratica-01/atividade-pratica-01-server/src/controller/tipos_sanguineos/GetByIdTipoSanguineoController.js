@@ -8,11 +8,7 @@ export class GetByIdTipoSanguineoController {
         const tipo_Sanguineo = await prismaClient.tipo_Sanguineo.findUnique({
             where:{
                 id: parseInt(id)
-            },
-            include: {
-                pessoa: true
             }
-            
         });
 
         return response.json(tipo_Sanguineo);
