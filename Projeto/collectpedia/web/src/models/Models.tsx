@@ -116,18 +116,12 @@ export interface SelecaoRecentesModel {
     nome: string,
     vol: number,
     num: string,
-    top_recentes: string
+    top_recentes: string,
+    mon: string,
+    ed_nome: string
 }
 
 // Resultados
-
-// export interface ResComicMangaModel {
-//     nome: string,
-//     vol: number,
-//     num_edicoes: string,
-//     ano_pub: string,
-//     editora: string
-// }
 
 export interface ResComicMangaModel {
 
@@ -139,4 +133,29 @@ export interface ResComicMangaModel {
     ano_pub: string,
     editora: string,
     demografia: string
+}
+
+//Pagina Serie de Comic/Manga
+export interface SerieEsqModel{
+    nome: string,
+    num: string,
+    un_mon: string,
+    preco: number
+
+}
+
+export interface SerieDirModel{
+    nome: string,
+    num: string,
+    mon: string,
+    preco: number,
+    vol: number,
+    data_lanc: string,
+    c_nome: string,
+    func: string,
+    estado_pub_atual: string,
+    capa: string,
+    caps: number,
+    mangaka: string
+
 }
