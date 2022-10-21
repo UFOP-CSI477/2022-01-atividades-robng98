@@ -8,6 +8,9 @@ export class GetByIdLocalColetaController {
         const local_Coleta = await prismaClient.local_Coleta.findUnique({
             where: {
                 id: parseInt(id)
+            },
+            include: {
+                doacao: true
             }
         });
 

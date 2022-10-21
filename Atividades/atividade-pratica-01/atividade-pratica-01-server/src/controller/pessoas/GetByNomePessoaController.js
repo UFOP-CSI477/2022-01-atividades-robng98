@@ -10,8 +10,9 @@ export class GetByNomePessoaController {
             where: {
                 nome: nome
             },
-            include:{
-                tipo_sanguineo: true
+            include: {
+                tipo_sanguineo: true,
+                doacao: true
             }
         });
 

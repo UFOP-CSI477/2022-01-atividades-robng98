@@ -9,8 +9,9 @@ export class GetByIdPessoaController {
             where: {
                 id: parseInt(id)
             },
-            include:{
-                tipo_sanguineo: true
+            include: {
+                tipo_sanguineo: true,
+                doacao: true
             }
 
         });

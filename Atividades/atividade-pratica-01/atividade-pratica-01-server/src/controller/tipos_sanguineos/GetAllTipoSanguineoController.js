@@ -13,7 +13,10 @@ export class GetAllTipoSanguineoController {
                 {
                     fator: 'asc'
                 }
-            ]
+            ],
+            include: {
+                pessoa: true
+            }
         });
 
         return response.json(tipos_sanguineos);
