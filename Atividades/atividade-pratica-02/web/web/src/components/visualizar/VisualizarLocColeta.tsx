@@ -8,17 +8,9 @@ import styled from 'styled-components';
 import { Local_Coleta_Model, Tipo_Sanguineo_Model } from "../../models/models";
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
+import { Botao, BotaoDel, BotaoPeq, Check } from "./VisualizarDoacoes";
 
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
+
 
 const VisualizarLocColeta = () => {
     const tipo = 'locais_coleta';
@@ -26,12 +18,11 @@ const VisualizarLocColeta = () => {
 
 
     const [result, setResult] = useState<Local_Coleta_Model[]>([]);
+    const [delete_vet, setDelete_vet] = useState<string[]>([]);
 
 
-    useEffect(() => {
-        loadData()
-     
-    }, []);
+    const v_vazio: string[] = []
+
 
     const loadData = () => {
         try {
@@ -45,6 +36,81 @@ const VisualizarLocColeta = () => {
             console.error(error);
         }
     }
+
+    useEffect(() => {
+        loadData()
+
+    }, [result]);
+
+    const altVet = async (check: boolean, num: string) => {
+
+        if (check && delete_vet.indexOf(num) === -1) {
+            setDelete_vet(old => [...old, num])
+
+        } else {
+            if (!check && delete_vet.indexOf(num) !== -1) {
+                setDelete_vet(delete_vet.filter(item => item !== num))
+
+            }
+        }
+
+    }
+
+    const handleDeleteLcColeta = async (e: React.FormEvent<HTMLElement>) => {
+        e.preventDefault()
+
+        if (!window.confirm("Confirma as Exclusões?")) {
+            return;
+        }
+
+        let data = {
+            id: ''
+        }
+
+        let flag = false
+
+
+        delete_vet.forEach(async (item) => {
+
+            result.forEach(res => {
+                delete_vet.forEach(item2 => {
+
+                    if (res.id === parseInt(item2) && res.doacao.length && !flag) {
+                        // console.log(`Doação ${res.doacao}`)
+                        window.alert(`Algum dos locais possui, ao menos, uma doação associada! Às exclua primeiro.`);
+
+                        // window.location.reload();
+                        flag = true
+                        setDelete_vet(v_vazio)
+                    }
+                })
+            })
+
+            data = {
+                id: item
+            }
+
+            if (!flag) {
+                console.log(`Flag ${flag}`)
+                try {
+
+                    await api.delete(`/${tipo}`, {
+                        data: {
+                            data
+                        }
+                    });
+
+                    setResult(result.filter(item => item.id !== parseInt(data.id)));
+                    setDelete_vet(v_vazio)
+
+                } catch (error) {
+                    window.alert("Erro ao excluir!");
+                    console.error(error);
+                }
+            }
+        })
+    }
+
 
     console.log(result)
 
@@ -74,6 +140,16 @@ const VisualizarLocColeta = () => {
                                             </BotaoPeq>
                                         </td>
 
+                                        <td style={{ gridColumn: '12' }}>
+
+                                            <div className="form-check">
+                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
+                                                    id="flexCheckDefault" name="flexCheckDefault" />
+
+                                            </div>
+
+                                        </td>
+
                                     </tr>
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
@@ -97,6 +173,11 @@ const VisualizarLocColeta = () => {
                 </table>
 
             </div>
+
+            <form onSubmit={handleDeleteLcColeta} style={{ gridRow: '4', gridColumn: '8' }}>
+                <BotaoDel type="submit">Deletar</BotaoDel>
+            </form>
+
 
             <Link to={'/'} style={{ gridRow: '4', gridColumn: '9/11' }}>
                 <Botao>Tela Inicial</Botao>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import "./visualizar.css";
 import '../../App.css'
@@ -8,18 +8,9 @@ import styled from 'styled-components';
 import { Doacao_Model, Local_Coleta_Model, Pessoa_Model, Tipo_Sanguineo_Model } from "../../models/models";
 // import { IconName } from "react-icons/ai";
 import { BsArrowDownSquareFill } from 'react-icons/bs'
+import { Botao, BotaoDel, BotaoPeq, Check } from "./VisualizarDoacoes";
+// import { isTemplateExpression } from "typescript";
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
-
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
 
 const VisualizarPessoas = () => {
     const tipo = 'pessoas';
@@ -27,12 +18,12 @@ const VisualizarPessoas = () => {
 
 
     const [result, setResult] = useState<Pessoa_Model[]>([]);
+    const [delete_vet, setDelete_vet] = useState<string[]>([]);
 
+    const v_vazio: string[]= []
 
-    useEffect(() => {
-        loadData()
-      
-    }, []);
+    // const navigate = useNavigate()
+
 
     const loadData = () => {
         try {
@@ -47,6 +38,91 @@ const VisualizarPessoas = () => {
         }
     }
 
+    useEffect(() => {
+        loadData()
+
+    }, [result]);
+
+    const altVet = async (check: boolean, num: string) => {
+
+        if (check && delete_vet.indexOf(num) === -1) {
+            setDelete_vet(old => [...old, num])
+
+        } else {
+            if (!check && delete_vet.indexOf(num) !== -1) {
+                setDelete_vet(delete_vet.filter(item => item !== num))
+
+            }
+        }
+
+    }
+
+    const handleDeletePessoas = async (e: React.FormEvent<HTMLElement>) => {
+        e.preventDefault()
+
+        if (!window.confirm("Confirma as Exclusões?")) {
+            return;
+        }
+
+        let data = {
+            id: ''
+        }
+
+        let flag = false
+
+
+        delete_vet.forEach(async (item) => {
+
+            result.forEach(res => {
+            delete_vet.forEach(item2 => {
+
+                if (res.id === parseInt(item2) && res.doacao.length && !flag) {
+                    // console.log(`Doação ${res.doacao}`)
+                    window.alert("Alguma das Pessoas possui doação associada! Às exclua primeiro.");
+
+                    // window.location.reload();
+                    flag = true
+                    setDelete_vet(v_vazio)
+                }
+            }) })
+
+            data = {
+                id: item
+            }
+
+            if (!flag) {
+                console.log(`Flag ${flag}`)
+                try {
+
+                    await api.delete(`/${tipo}`, {
+                        data: {
+                            data
+                        }
+                    });
+
+                    setResult(result.filter(item => item.id !== parseInt(data.id)));
+                    setDelete_vet(v_vazio)
+
+                } catch (error) {
+                    window.alert("Erro ao excluir!");
+                    console.error(error);
+                }
+            }
+        })
+
+        // function unCheck() {
+        //     var x = document.getElementsByName("flexCheckDefault");
+        //     let i
+        //     for(i=0; i<=x.length; i++) {
+        //        x[i]. = false;
+        //      }   
+           
+        //   }
+        
+        // window.location.reload();
+
+    }
+
     return (
         <div className="App">
 
@@ -57,6 +133,11 @@ const VisualizarPessoas = () => {
 
             <div className="fundo-div-principal" style={{ gridRow: '3' }}>
 
+                {delete_vet.map(item => (
+                    <>
+                        {item}
+                    </>
+                ))}
                 <table style={{ width: '100%', fontSize: '18px' }}>
                     <tbody>
 
@@ -74,6 +155,15 @@ const VisualizarPessoas = () => {
                                             </BotaoPeq>
                                         </td>
                                         {/* </p> */}
+                                        <td style={{ gridColumn: '12' }}>
+
+                                            <div className="form-check">
+                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
+                                                    id="flexCheckDefault" name="flexCheckDefault"  />
+
+                                            </div>
+
+                                        </td>
 
                                     </tr>
                                     <div >
@@ -84,6 +174,12 @@ const VisualizarPessoas = () => {
                                                 Rua: {item.rua}, {item.numero}/{item.complemento}<br />
                                                 {/* {item.created_at} <br />
                                                 {item.updated_at} <br /> */}
+
+                                                {item.doacao.map(item2 => (
+                                                    <>
+                                                        {item2.id}
+                                                    </>
+                                                ))}
 
                                             </div>
                                         </div>
@@ -96,6 +192,10 @@ const VisualizarPessoas = () => {
                 </table>
 
             </div>
+
+            <form onSubmit={handleDeletePessoas} style={{ gridRow: '4', gridColumn: '8' }}>
+                <BotaoDel type="submit">Deletar</BotaoDel>
+            </form>
 
             <Link to={'/'} style={{ gridRow: '4', gridColumn: '9/11' }}>
                 <Botao>Tela Inicial</Botao>
