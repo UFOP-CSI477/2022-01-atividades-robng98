@@ -1,19 +1,7 @@
 import './header.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-// import { Alert } from 'react-bootstrap';
-// import Menu from '../menu/Menu'
 
-
-// function Header(){
-
-// }
-
-// interface HeaderProps {
-//     name: string;
-// }
-
-// const Header = (props: HeaderProps) => {
 const Header = () => {
 
 
@@ -38,7 +26,7 @@ const Header = () => {
                                 <ul className="dropdown-menu">
                                     <li><Link className="dropdown-item" to={'/view/doacoes'}>Visualizar info.</Link></li>
                                     <li><Link className="dropdown-item" to={'/add/doacoes'}>Cadastrar Doação</Link></li>
-                                    <li><Link className="dropdown-item" to={'#'}>Something else here</Link></li>
+                                    <li><Link className="dropdown-item" to={'/update/doacoes'}>Atualizar Doação</Link></li>
                                 </ul>
                             </li>
 
@@ -47,9 +35,9 @@ const Header = () => {
                                     Pessoas
                                 </a>
                                 <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item" to={'/view/pessoas'}>Visualizar info.</Link></li>
-                                    <li><Link className="dropdown-item" to={'/add/pessoas'}>Cadastrar Doador</Link></li>
-                                    <li><Link className="dropdown-item" to={'#'}>Something else here</Link></li>
+                                    <li><Link className="dropdown-item" to={'/view/pessoas'}>Visualizar info.</Link></li>
+                                    <li><Link className="dropdown-item" to={'/add/pessoas'}>Cadastrar Pessoa</Link></li>
+                                    <li><Link className="dropdown-item" to={'/update/pessoas'}>Atualizar Pessoa</Link></li>
                                 </ul>
                             </li>
 
@@ -58,9 +46,9 @@ const Header = () => {
                                     Tipo Sanguíneos
                                 </a>
                                 <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item" to={'/view/tipos_sanguineos'}>Visualizar info.</Link></li>
+                                    <li><Link className="dropdown-item" to={'/view/tipos_sanguineos'}>Visualizar info.</Link></li>
                                     <li><Link className="dropdown-item" to={'/add/tipos_sanguineos'}>Cadastrar Tipo Sang.</Link></li>
-                                    <li><Link className="dropdown-item" to={'#'}>Something else here</Link></li>
+                                    <li><Link className="dropdown-item" to={'/update/tipos_sanguineos'}>Atualizar Tipo Sang.</Link></li>
                                 </ul>
                             </li>
 
@@ -69,9 +57,9 @@ const Header = () => {
                                     Locais de Coleta
                                 </a>
                                 <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item" to={'/view/locais_coleta'}>Visualizar info.</Link></li>
+                                    <li><Link className="dropdown-item" to={'/view/locais_coleta'}>Visualizar info.</Link></li>
                                     <li><Link className="dropdown-item" to={'/add/locais_coleta'}>Cadastrar Local de Col.</Link></li>
-                                    <li><Link className="dropdown-item" to={'#'}>Something else here</Link></li>
+                                    <li><Link className="dropdown-item" to={'/update/locais_coleta'}>Atualizar Local de Col.</Link></li>
                                 </ul>
                             </li>
                         </ul>
