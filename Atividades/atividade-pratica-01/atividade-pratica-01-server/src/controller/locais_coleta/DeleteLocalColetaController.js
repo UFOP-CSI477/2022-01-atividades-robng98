@@ -5,7 +5,7 @@ export class DeleteLocalColetaController {
 
     async handle(request, response) {
 
-        let { id } = request.body;
+        let { id } = request.body.data;
         // console.log(id);
         id = parseInt(id);
 
