@@ -31,7 +31,7 @@ const Check = styled.input.attrs(() => ({
 
 // const T_Sub = styled.texto_subtit`
 // grid-column: 3/13', grid-row: 2/3', display: grid', grid-template-columns: repeat(10,1fr)', grid-template-rows: auto', margin-bottom: 5%
-// ` 
+// ` sd
 
 const TelaSerie = () => {
 

@@ -9,7 +9,7 @@ const buscaComicsController = new BuscaComicsController();
 const buscaMangaController = new BuscaMangaController();
 const hqsRecentesController = new HQsRecentesController();
 
-telaInicialRouter.get('/b_comics/:busca', buscaComicsController.handle);
+telaInicialRouter.get('/b_comic/:busca', buscaComicsController.handle);
 telaInicialRouter.get('/b_manga/:busca', buscaMangaController.handle);
 telaInicialRouter.get('/recentes', hqsRecentesController.handle);
 
