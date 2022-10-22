@@ -5,10 +5,10 @@ header {
     padding-bottom: 2px;
 
 
-    grid-column: 1/13;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-row: 1;
+    /* grid-column: 1/13; */
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 1fr); */
+    /* grid-row: 1; */
     margin-bottom: 70px;
         
 

@@ -4,7 +4,6 @@ import api from "../../services/api";
 import "./visualizar.css";
 import '../../App.css'
 
-import styled from 'styled-components';
 import { Tipo_Sanguineo_Model } from "../../models/models";
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 
@@ -21,8 +20,6 @@ const VisualizarTpSang = () => {
 
     const v_vazio: string[] = []
 
-    // const navigate = useNavigate()
-
 
     const loadData = () => {
         try {
@@ -32,7 +29,7 @@ const VisualizarTpSang = () => {
 
             });
         } catch (error) {
-            alert('Erro ao cadastrar o estado. Tente novamente');
+            alert('Erro. Tente novamente');
             console.error(error);
         }
     }
@@ -73,13 +70,11 @@ const VisualizarTpSang = () => {
         delete_vet.forEach(async (item) => {
 
             result.forEach(res => {
-                delete_vet.forEach(item2 => {
+                delete_vet.forEach(del_index => {
 
-                    if (res.id === parseInt(item2) && res.pessoa.length && !flag) {
-                        // console.log(`Doação ${res.doacao}`)
+                    if (res.id === parseInt(del_index) && res.pessoa.length && !flag) {
+
                         window.alert(`Algum dos Tipos Sanguíneos possui, ao menos, uma pessoa associada! Às exclua primeiro.`);
-
-                        // window.location.reload();
                         flag = true
                         setDelete_vet(v_vazio)
                     }
@@ -91,7 +86,7 @@ const VisualizarTpSang = () => {
             }
 
             if (!flag) {
-                console.log(`Flag ${flag}`)
+
                 try {
 
                     await api.delete(`/${tipo}`, {

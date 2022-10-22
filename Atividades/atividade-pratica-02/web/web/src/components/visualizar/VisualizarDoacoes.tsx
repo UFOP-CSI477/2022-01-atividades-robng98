@@ -9,7 +9,7 @@ import { Doacao_Model } from "../../models/models";
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 
 export const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
+    className: 'btn btn-warning btn-lg',
 }))`
     background-color: var(--vermlar_escuro)
 `;
@@ -17,12 +17,13 @@ export const Botao = styled.button.attrs(() => ({
 export const BotaoDel = styled.button.attrs(() => ({
     className: 'btn btn-danger btn-lg',
 }))`
+
     grid-row: 4; 
     grid-column: 8
 `;
 
 export const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
+    className: 'btn btn-warning',
 }))`
     background-color: var(--vermlar_escuro);
     border-color: var(--vermlar_claro)
@@ -35,12 +36,12 @@ export const Check = styled.input.attrs(() => ({
 }))`
 :checked{
     background-color: var(--bs-danger);
-    border-color: var(--vermlar_claro)
+    border-color: var(--bs-danger)
 }
 `;
 
 const VisualizarDoacoes = () => {
-    const tipoDoa = 'doacoes';
+    const tipo_ = 'doacoes';
 
 
 
@@ -50,12 +51,12 @@ const VisualizarDoacoes = () => {
     const loadData = () => {
         try {
 
-            api.get(`/${tipoDoa}`).then(response => {
+            api.get(`/${tipo_}`).then(response => {
                 setResult(response.data);
 
             });
         } catch (error) {
-            alert('Erro ao cadastrar o estado. Tente novamente');
+            alert('Erro. Tente novamente');
             console.error(error);
         }
     }
@@ -99,7 +100,7 @@ const VisualizarDoacoes = () => {
 
             try {
 
-                await api.delete('/doacoes', {
+                await api.delete(`/${tipo_}`, {
                     data: {
                         data
                     }

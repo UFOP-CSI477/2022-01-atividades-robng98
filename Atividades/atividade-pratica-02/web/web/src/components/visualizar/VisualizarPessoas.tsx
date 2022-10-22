@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import "./visualizar.css";
 import '../../App.css'
 
-import styled from 'styled-components';
-import { Doacao_Model, Local_Coleta_Model, Pessoa_Model, Tipo_Sanguineo_Model } from "../../models/models";
-// import { IconName } from "react-icons/ai";
+
+import { Pessoa_Model } from "../../models/models";
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 import { Botao, BotaoDel, BotaoPeq, Check } from "./VisualizarDoacoes";
-// import { isTemplateExpression } from "typescript";
 
 
 const VisualizarPessoas = () => {
@@ -22,8 +20,6 @@ const VisualizarPessoas = () => {
 
     const v_vazio: string[]= []
 
-    // const navigate = useNavigate()
-
 
     const loadData = () => {
         try {
@@ -33,7 +29,7 @@ const VisualizarPessoas = () => {
 
             });
         } catch (error) {
-            alert('Erro ao cadastrar o estado. Tente novamente');
+            alert('Erro. Tente novamente');
             console.error(error);
         }
     }
@@ -74,9 +70,9 @@ const VisualizarPessoas = () => {
         delete_vet.forEach(async (item) => {
 
             result.forEach(res => {
-            delete_vet.forEach(item2 => {
+            delete_vet.forEach(del_index => {
 
-                if (res.id === parseInt(item2) && res.doacao.length && !flag) {
+                if (res.id === parseInt(del_index) && res.doacao.length && !flag) {
                     // console.log(`Doação ${res.doacao}`)
                     window.alert("Alguma das Pessoas possui doação associada! Às exclua primeiro.");
 
@@ -168,7 +164,7 @@ const VisualizarPessoas = () => {
                                     </tr>
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
-                                            <div className="card card-body" style={{ background: 'none', width: '900px', textAlign: 'left' }}>
+                                            <div className="card card-body" style={{ background: 'none', width: '890px', textAlign: 'left' }}>
                                                 CPF: {item.documento}<br />
                                                 Tipo Sanguíneo: {item.tipo_sanguineo.tipo} {item.tipo_sanguineo.fator} <br />
                                                 Rua: {item.rua}, {item.numero}/{item.complemento}<br />

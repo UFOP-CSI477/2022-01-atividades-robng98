@@ -32,7 +32,7 @@ const VisualizarLocColeta = () => {
 
             });
         } catch (error) {
-            alert('Erro ao cadastrar o estado. Tente novamente');
+            alert('Erro. Tente novamente');
             console.error(error);
         }
     }
@@ -73,10 +73,10 @@ const VisualizarLocColeta = () => {
         delete_vet.forEach(async (item) => {
 
             result.forEach(res => {
-                delete_vet.forEach(item2 => {
+                delete_vet.forEach(del_index => {
 
-                    if (res.id === parseInt(item2) && res.doacao.length && !flag) {
-                        // console.log(`Doação ${res.doacao}`)
+                    if (res.id === parseInt(del_index) && res.doacao.length && !flag) {
+                        
                         window.alert(`Algum dos locais possui, ao menos, uma doação associada! Às exclua primeiro.`);
 
                         // window.location.reload();
@@ -91,7 +91,6 @@ const VisualizarLocColeta = () => {
             }
 
             if (!flag) {
-                console.log(`Flag ${flag}`)
                 try {
 
                     await api.delete(`/${tipo}`, {
@@ -110,9 +109,6 @@ const VisualizarLocColeta = () => {
             }
         })
     }
-
-
-    console.log(result)
 
     return (
         <div className="App">

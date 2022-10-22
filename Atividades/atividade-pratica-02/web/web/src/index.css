@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--cinza_escuro) !important;
-  /* background-image: url("../public/logo192.png"); */
+  /* background-image: url("../public/droplet-half.svg"); */
   background-size: cover;
   background-blend-mode: multiply;
 
@@ -23,7 +23,7 @@ code {
   --cinza_escuro: #c7c6cc;
   --cinza_medio: rgb(33,37,41);
   --cinza_claro: #252a3a;
-  --vermlar_escuro: #c04f3b;
+  --vermlar_escuro: #ffc107;
   --vermlar_claro: #f78c6c;
   --cinza_font: #9cb2ba;
   --font_fm: 'Roboto', sans-serif;

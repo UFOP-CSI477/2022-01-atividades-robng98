@@ -4,6 +4,7 @@ import AtualizaDoacao from "./components/atualizar/AtualizaDoacao";
 import AtualizaLocColeta from "./components/atualizar/AtualizaLocColeta";
 import AtualizaPessoa from "./components/atualizar/AtualizaPessoa";
 import AtualizaTpSang from "./components/atualizar/AtualizaTpSang";
+import Busca from "./components/buscar/busca";
 import CadastraDoacao from "./components/cadastrar/CadastraDoacao";
 import CadastraLocColeta from "./components/cadastrar/CadastraLocColeta";
 import CadastraPessoas from "./components/cadastrar/CadastraPessoa";
@@ -36,6 +37,9 @@ const AppRoutes = () => {
                 <Route path="/update/pessoas" element={<AtualizaPessoa />} />
                 <Route path="/update/tipos_sanguineos" element={<AtualizaTpSang />} />
                 <Route path="/update/locais_coleta" element={<AtualizaLocColeta />} />
+
+                <Route path="/b_:categ/:tipo/:busca" element={<Busca />} />
+
 
 
                 {/* <Route path="/b_:tipo/:busca" element={<ResultBusca/>}/>
