@@ -20,6 +20,14 @@ const VisualizarTpSang = () => {
 
     const v_vazio: string[] = []
 
+    const [key, setKey] = useState(0);
+
+    const clearClick = () => {
+
+
+        setKey((k) => (k + 1))
+
+    }
 
     const loadData = () => {
         try {
@@ -77,6 +85,8 @@ const VisualizarTpSang = () => {
                         window.alert(`Algum dos Tipos Sanguíneos possui, ao menos, uma pessoa associada! Às exclua primeiro.`);
                         flag = true
                         setDelete_vet(v_vazio)
+                        clearClick()
+
                     }
                 })
             })
@@ -97,6 +107,8 @@ const VisualizarTpSang = () => {
 
                     setResult(result.filter(item => item.id !== parseInt(data.id)));
                     setDelete_vet(v_vazio)
+                    clearClick()
+
 
                 } catch (error) {
                     window.alert("Erro ao excluir!");
@@ -122,30 +134,32 @@ const VisualizarTpSang = () => {
                         {result.map((item, index) => (
                             <>
                                 <div key={index}>
-                                    <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+
+
+                                    <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
 
                                         <th style={{ gridColumn: '1/3', textAlign: 'justify', marginLeft: '5%' }}>Sangue: {item.tipo}<br /> Fator: {item.fator}</th>
 
-                                        <td style={{ gridColumn: '3' }}>
+                                        <td style={{ gridColumn: '9/11' }}>
                                             <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">
                                                 Exibir info. <BsArrowDownSquareFill />
                                             </BotaoPeq>
                                         </td>
 
-                                        <td style={{ gridColumn: '12' }}>
 
-                                            <div className="form-check">
-                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
-                                                    id="flexCheckDefault" name="flexCheckDefault" />
+                                        <td style={{ gridColumn: '12' }} className="form-check">
 
-                                            </div>
+                                            <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
+                                                id="flexCheckDefault" key={key} />
+
+
 
                                         </td>
 
                                     </tr>
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
-                                            <div className="card card-body" style={{ background: 'none', width: '900px', textAlign: 'justify' }}>
+                                            <div className="card card-body" style={{ background: 'none', width: '890px', textAlign: 'justify' }}>
                                                 <p>
                                                     Identificador: {item.id} <br />
                                                     Adicionado em: {item.created_at} <br />

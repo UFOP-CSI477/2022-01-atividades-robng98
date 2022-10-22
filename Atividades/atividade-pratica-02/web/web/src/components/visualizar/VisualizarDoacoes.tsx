@@ -48,6 +48,17 @@ const VisualizarDoacoes = () => {
     const [result, setResult] = useState<Doacao_Model[]>([]);
     const [delete_vet, setDelete_vet] = useState<string[]>([]);
 
+    const v_vazio: string[] = []
+
+    const [key, setKey] = useState(0);
+
+    const clearClick = () => {
+
+
+        setKey((k) => (k + 1))
+
+    }
+
     const loadData = () => {
         try {
 
@@ -67,12 +78,12 @@ const VisualizarDoacoes = () => {
     }, [result]);
 
     const altVet = async (check: boolean, num: string) => {
-        
-        if (check && delete_vet.indexOf(num) === -1 ) {
+
+        if (check && delete_vet.indexOf(num) === -1) {
             setDelete_vet(old => [...old, num])
 
-        }else{
-            if(!check && delete_vet.indexOf(num) !== -1){
+        } else {
+            if (!check && delete_vet.indexOf(num) !== -1) {
                 setDelete_vet(delete_vet.filter(item => item !== num))
 
             }
@@ -83,7 +94,7 @@ const VisualizarDoacoes = () => {
     const handleDeleteDoacoes = async (e: React.FormEvent<HTMLElement>) => {
         e.preventDefault()
 
-        if(!window.confirm("Confirma as Exclusões?")) {
+        if (!window.confirm("Confirma as Exclusões?")) {
             return;
         }
 
@@ -92,7 +103,7 @@ const VisualizarDoacoes = () => {
         }
 
         delete_vet.forEach(async (item) => {
-            
+
             data = {
                 id: item
             }
@@ -105,15 +116,17 @@ const VisualizarDoacoes = () => {
                         data
                     }
                 });
-    
+
                 setResult(result.filter(item => item.id !== parseInt(data.id)));
-    
+                setDelete_vet(v_vazio)
+                clearClick()
+
             } catch (error) {
                 window.alert("Erro ao excluir!");
                 console.error(error);
             }
         })
-        
+
     }
 
     return (
@@ -128,7 +141,7 @@ const VisualizarDoacoes = () => {
 
                 <table style={{ width: '100%', fontSize: '18px' }}>
                     <tbody>
-                        
+
                         {result.map((item, index) => (
                             <>
                                 <div key={index}>
@@ -142,21 +155,22 @@ const VisualizarDoacoes = () => {
                                             </BotaoPeq>
                                         </td>
 
-                                        
+
                                         <td style={{ gridColumn: '12' }}>
-                                        
+
                                             <div className="form-check">
-                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)} 
-                                                id="flexCheckDefault" />
-                                              
+                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
+                                                    id="flexCheckDefault" key={key} />
+
+
                                             </div>
-                                        
+
                                         </td>
-                                        
+
                                     </tr>
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
-                                            <div className="card card-body" style={{ background: 'none', width: '894px', textAlign: 'justify' }}>
+                                            <div className="card card-body" style={{ background: 'none', width: '890px', textAlign: 'justify' }}>
                                                 <p>
                                                     Doador(a): {item.pessoa.nome} <br />
                                                     CPF: {item.pessoa.documento}<br />
@@ -166,7 +180,7 @@ const VisualizarDoacoes = () => {
                                                     Local de coleta: {item.local_coleta.nome} <br />
                                                     Rua: {item.local_coleta.rua} Nº {item.local_coleta.numero} {item.local_coleta.complemento}
                                                 </p>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +192,7 @@ const VisualizarDoacoes = () => {
                 </table>
 
             </div>
-            
+
             <form onSubmit={handleDeleteDoacoes} style={{ gridRow: '4', gridColumn: '8' }}>
                 <BotaoDel type="submit">Deletar</BotaoDel>
             </form>
