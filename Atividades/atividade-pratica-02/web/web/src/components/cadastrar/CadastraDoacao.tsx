@@ -5,19 +5,17 @@ import '../../App.css'
 
 import styled from 'styled-components';
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
+export const Botao = styled.button.attrs(() => ({
+    className: 'btn btn-success btn-lg',
+}))``
+
+export const BotaoPeq = styled.button.attrs(() => ({
+    className: 'btn btn-warning',
 }))`
     background-color: var(--vermlar_escuro)
 `;
 
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
-
-const Div_princ = styled.div.attrs(() => ({
+export const Div_princ = styled.div.attrs(() => ({
     className: 'fundo-div-principal',
 }))`
     grid-row: 3/5; 
@@ -82,25 +80,32 @@ const CadastraDoacao = () => {
 
                 {inputs.map((item) => (
                     <div>
-                        <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ')}</label> <br />
-                        <input
-                            type="text"
-                            name={item[1].toString()}
-                            id={item[1].toString()}
-                            placeholder={item[1].toString()}
-                            value={item[0]}
-                            onChange={e => setProp(parseInt(e.target.value), item[1].toString())} />
+                        <p>
+                            <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ').toUpperCase()}</label> <br />
+                            <input
+                                type="text"
+                                name={item[1].toString()}
+                                id={item[1].toString()}
+                                placeholder={item[1].toString()}
+                                value={item[0]}
+                                onChange={e => setProp(parseInt(e.target.value), item[1].toString())} />
+                            {/* <select className="form-select form-select-yellow me-2" style={{ width: '100px' }} required>
+                                <option selected disabled>Tipo</option>
+                                <option value="Id">Id</option>
+                                <option value="Nome">Nome</option>
+                            </select> */}
+                        </p>
                     </div>
                 ))}
 
             </Div_princ>
 
-            <form onSubmit={handleCadastraTpSang} style={{ gridColumn: '8', gridRow: '3' }}>
+            <form onSubmit={handleCadastraTpSang} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
                 <Botao type="submit">Cadastrar</Botao>
             </form>
 
-            <Link to={'/'} style={{ gridRow: '4', gridColumn: '8', marginBottom: '10%' }}>
-                <Botao>Tela Inicial</Botao>
+            <Link to={'/'} style={{ gridRowEnd: '6', gridColumn: '8', justifySelf: 'flex-end' }}>
+                <BotaoPeq>Tela Inicial</BotaoPeq>
 
             </Link>
 
