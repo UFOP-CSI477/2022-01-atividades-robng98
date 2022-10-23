@@ -11,14 +11,12 @@ import { Botao, BotaoDel, BotaoPeq, Check } from "../visualizar/VisualizarDoacoe
 const BuscaNome = () => {
 
     const { busca, categ } = useParams()
-    
+
     let categ_front = categ
 
     const [resFinal, setResFinal] = useState<Array<Resultado_Busca_Model[]>>([]);
 
     const [delete_vet, setDelete_vet] = useState<string[]>([]);
-
-    let [flag, setFlag] = useState(false)
 
     const navigate = useNavigate()
 
@@ -33,22 +31,7 @@ const BuscaNome = () => {
 
     }
 
-
-    const ResFinalisValid = (res: Array<Resultado_Busca_Model[]>, flag: boolean) => {
-        res.forEach(item => {
-            console.log('oioioi')
-            if ((item.length === 0 && flag) || (res.length === 0 && flag) ) {
-                window.alert('Busca Inválida. Retornando à Tela Inicial.')
-                console.log(item)
-                setFlag(false)
-    
-            }
-    })
-
-    }
-
     const loadData = () => {
-        setFlag(true)
 
 
         switch (categ) {
@@ -75,8 +58,7 @@ const BuscaNome = () => {
     useEffect(() => {
 
         loadData()
-        console.log(resFinal)
-        ResFinalisValid(resFinal, flag)
+        // console.log(resFinal)
 
 
     }, [delete_vet, busca, categ])
@@ -188,6 +170,14 @@ const BuscaNome = () => {
 
     }
 
+    const buscaInv = (res: Resultado_Busca_Model[]) => {
+        if (res.length === 0) {
+            navigate('/b_invalid')
+
+        }
+
+    }
+
     return (
         <>
             <div className="App">
@@ -197,17 +187,25 @@ const BuscaNome = () => {
                     Resultados em "{categ_front?.replace(/_/g, ' ')}"
                 </p>
 
-                <div className="fundo-div-principal" style={{ gridRow: '3' }}>
+                <>
+                    {resFinal.forEach(elem => {
+                        { buscaInv(elem) }
+                    })}
+                </>
 
+                <div className="fundo-div-principal" style={{ gridRow: '3' }}>
 
                     {resFinal.map((item) => (
                         <>
+
                             {item.map((item_interno, index) => (
                                 <Fragment key={index}>
                                     <table style={{ width: '100%', fontSize: '18px' }}>
                                         <tbody>
-                                            <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', 
-                                            display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
+                                            <tr style={{
+                                                borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px',
+                                                display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center'
+                                            }}>
                                                 <th style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>Identificador: {item_interno.id}<br /> {item_interno.nome}</th>
                                                 <td style={{ gridColumn: '9/11' }}>
                                                     <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">

@@ -87,8 +87,6 @@ const VisualizarLocColeta = () => {
                     if (res.id === parseInt(del_index) && res.doacao.length && !flag) {
 
                         window.alert(`Algum dos locais possui, ao menos, uma doação associada! Às exclua primeiro.`);
-
-                        // window.location.reload();
                         flag = true
                         setDelete_vet(v_vazio)
                         clearClick()
@@ -137,29 +135,8 @@ const VisualizarLocColeta = () => {
                         {result.map((item, index) => (
                             <>
                                 <div key={index}>
-                                    {/* <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
 
-                                        <th style={{ gridColumn: '1/3', textAlign: 'justify', marginLeft: '5%' }}>{item.nome}</th>
-
-                                        <td style={{ gridColumn: '3' }}>
-                                            <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">
-                                                Exibir info. <BsArrowDownSquareFill />
-                                            </BotaoPeq>
-                                        </td>
-
-                                        <td style={{ gridColumn: '12' }}>
-
-                                            <div className="form-check">
-                                                <Check value={item.id} onChange={e => altVet(e.target.checked, e.target.value)}
-                                                    id="flexCheckDefault" name="flexCheckDefault" />
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr> */}
-
-                                    <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
+                                    <tr className="fs-5" style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
 
                                         <th style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>{item.nome}</th>
 

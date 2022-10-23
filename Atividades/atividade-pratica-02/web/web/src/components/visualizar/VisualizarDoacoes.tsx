@@ -147,7 +147,12 @@ const VisualizarDoacoes = () => {
                                 <div key={index}>
                                     <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
 
-                                        <th style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>Identificador: {item.id}<br /> Feita em: {item.data}</th>
+                                        <th className="fs-5" style={{ gridColumn: '1/7', textAlign: 'justify', marginLeft: '5%' }}>
+                                            Feita em: {item.data}
+                                            <ul>
+                                                <li style={{ listStyleType: 'none' }}>Id: {item.id}</li>
+                                            </ul>
+                                        </th>
 
                                         <td style={{ gridColumn: '9/11' }}>
                                             <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">

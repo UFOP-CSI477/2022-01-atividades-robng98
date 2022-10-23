@@ -138,7 +138,11 @@ const VisualizarTpSang = () => {
 
                                     <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
 
-                                        <th style={{ gridColumn: '1/3', textAlign: 'justify', marginLeft: '5%' }}>Sangue: {item.tipo}<br /> Fator: {item.fator}</th>
+                                        <th className="fs-5" style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>Sangue: {item.tipo}
+                                            <ul>
+                                                <li style={{ listStyleType: 'none' }}>Fator: {item.fator}</li>
+                                            </ul>
+                                        </th>
 
                                         <td style={{ gridColumn: '9/11' }}>
                                             <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">
@@ -160,12 +164,25 @@ const VisualizarTpSang = () => {
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
                                             <div className="card card-body" style={{ background: 'none', width: '890px', textAlign: 'justify' }}>
-                                                <p>
-                                                    Identificador: {item.id} <br />
-                                                    Adicionado em: {item.created_at} <br />
-                                                    Atualizado em: {item.updated_at}<br />
+                                                <div className="container">
+                                                    <div className="row">
 
-                                                </p>
+                                                        <div className="col">
+
+                                                            <div className="fs-5 fw-bold">Adicionado em</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.created_at}</ul>
+
+                                                            <div className="fs-5 fw-bold">Atualizado em</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.updated_at}</ul>
+                                                        </div>
+
+                                                        <div className="col">
+
+                                                            <div className="fs-5 fw-bold">Identificador</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.id}</ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                         </div>

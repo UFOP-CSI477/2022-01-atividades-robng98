@@ -15,7 +15,7 @@ export const BotaoPeq = styled.button.attrs(() => ({
     background-color: var(--vermlar_escuro)
 `;
 
-export const Div_princ = styled.div.attrs(() => ({
+export const DivPrinc = styled.div.attrs(() => ({
     className: 'fundo-div-principal',
 }))`
     grid-row: 3/5; 
@@ -76,7 +76,7 @@ const CadastraDoacao = () => {
 
             </p>
 
-            <Div_princ>
+            <DivPrinc>
 
                 {inputs.map((item) => (
                     <div>
@@ -98,7 +98,7 @@ const CadastraDoacao = () => {
                     </div>
                 ))}
 
-            </Div_princ>
+            </DivPrinc>
 
             <form onSubmit={handleCadastraTpSang} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
                 <Botao type="submit">Cadastrar</Botao>

@@ -3,27 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import '../../App.css'
 
-import styled from 'styled-components';
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
+import { Botao, BotaoPeq, DivPrinc } from '../cadastrar/CadastraDoacao'
 
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
-
-const Div_princ = styled.div.attrs(() => ({
-    className: 'fundo-div-principal',
-}))`
-    grid-row: 3/5; 
-    grid-column-end: 7; 
-    font-size: 18px;
-`;
 
 const AtualizaDoacao = () => {
     const tipo_ = 'doacoes';
@@ -83,11 +65,11 @@ const AtualizaDoacao = () => {
 
             </p>
 
-            <Div_princ>
+            <DivPrinc>
 
                 {inputs.map((item) => (
                     <div>
-                        <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ')}</label> <br />
+                        <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ').toUpperCase()}</label> <br />
                         <input
                             type="text"
                             name={item[1].toString()}
@@ -98,17 +80,17 @@ const AtualizaDoacao = () => {
                     </div>
                 ))}
 
-            </Div_princ>
+            </DivPrinc>
+            <form onSubmit={handleAtualizaDoacao} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
 
-            <form onSubmit={handleAtualizaDoacao} style={{ gridColumn: '8', gridRow: '3' }}>
                 <Botao type="submit">Atualizar</Botao>
             </form>
 
-            <Link to={'/'} style={{ gridRow: '4', gridColumn: '8', marginBottom: '10%' }}>
-                <Botao>Tela Inicial</Botao>
+            <Link to={'/'} style={{ gridRowEnd: '6', gridColumn: '8', justifySelf: 'flex-end' }}>
+
+                <BotaoPeq>Tela Inicial</BotaoPeq>
 
             </Link>
-
         </div >
     )
 

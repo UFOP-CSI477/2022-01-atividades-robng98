@@ -3,19 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import '../../App.css'
 
-import styled from 'styled-components';
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
+import { Botao, BotaoPeq, DivPrinc } from '../cadastrar/CadastraDoacao'
 
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
 
 const AtualizaPessoa = () => {
     const tipo = 'pessoas';
@@ -96,11 +86,11 @@ const AtualizaPessoa = () => {
 
             </p>
 
-            <div className="fundo-div-principal" style={{ gridRow: '3', fontSize: '18px' }}>
+            <DivPrinc>
 
                 {inputs.map((item) => (
                     <div>
-                        <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ')}</label> <br />
+                        <label htmlFor={item[1].toString()}>{item[1].toString().replace('_', ' ').toUpperCase()}</label> <br />
                         <input
                             type="text"
                             name={item[1].toString()}
@@ -110,12 +100,16 @@ const AtualizaPessoa = () => {
                             onChange={e => setProp(e.target.value.toString(), item[1].toString())} />
                     </div>
                 ))}
-                <form onSubmit={handleAtualizaPessoa} style={{ gridColumn: '8' }}>
-                    <Botao type="submit">Atualizar</Botao>
-                </form>
-            </div>
-            <Link to={'/'} style={{ gridRow: '4', gridColumn: '9/11' }}>
-                <Botao>Tela Inicial</Botao>
+
+            </DivPrinc>
+            <form onSubmit={handleAtualizaPessoa} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
+
+                <Botao type="submit">Atualizar</Botao>
+            </form>
+
+            <Link to={'/'} style={{ gridRowEnd: '6', gridColumn: '8', justifySelf: 'flex-end' }}>
+
+                <BotaoPeq>Tela Inicial</BotaoPeq>
 
             </Link>
         </div >

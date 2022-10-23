@@ -4,9 +4,7 @@ import api from "../../services/api";
 
 import '../../App.css'
 
-import styled from 'styled-components';
-
-import { Botao, BotaoPeq, Div_princ } from './CadastraDoacao'
+import { Botao, BotaoPeq, DivPrinc } from './CadastraDoacao'
 
 const CadastrarLocColeta = () => {
     const tipo = 'locais_coleta';
@@ -71,7 +69,7 @@ const CadastrarLocColeta = () => {
             </p>
 
 
-            <Div_princ>
+            <DivPrinc>
 
                 {inputs.map((item) => (
                     <div>
@@ -89,7 +87,7 @@ const CadastrarLocColeta = () => {
                     </div>
                 ))}
 
-            </Div_princ>
+            </DivPrinc>
 
             <form onSubmit={handleCadastraLocColeta} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
 

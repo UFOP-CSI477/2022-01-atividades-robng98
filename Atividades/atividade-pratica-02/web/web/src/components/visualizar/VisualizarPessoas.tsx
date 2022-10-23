@@ -29,7 +29,9 @@ const VisualizarPessoas = () => {
 
     }
 
-    const loadData = () => {
+
+    useEffect(() => {
+
         try {
 
             api.get(`/${tipo}`).then(response => {
@@ -40,13 +42,10 @@ const VisualizarPessoas = () => {
             alert('Erro. Tente novamente');
             console.error(error);
         }
-    }
-
-    useEffect(() => {
-        loadData()
 
 
-    }, [result]);
+
+    }, []);
 
     const altVet = async (check: boolean, num: string) => {
 
@@ -124,13 +123,13 @@ const VisualizarPessoas = () => {
 
             </p>
 
+            <>
+                {console.log(result)}
+            </>
+
             <div className="fundo-div-principal" style={{ gridRow: '3' }}>
 
-                {delete_vet.map(item => (
-                    <>
-                        {item}
-                    </>
-                ))}
+
                 <table style={{ width: '100%', fontSize: '18px' }}>
                     <tbody>
 
@@ -139,7 +138,7 @@ const VisualizarPessoas = () => {
                                 <div key={index}>
                                     <tr style={{ borderColor: 'var(--vermlar_escuro)', borderWidth: '0 0 1px 5px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', alignItems: 'center' }}>
 
-                                        <th style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>{item.nome}</th>
+                                    <th className="fs-5" style={{ gridColumn: '1/6', textAlign: 'justify', marginLeft: '5%' }}>{item.nome}</th>
 
                                         <td style={{ gridColumn: '9/11' }}>
                                             <BotaoPeq data-bs-toggle="collapse" data-bs-target={`#collapseWidthExample_${index}`} aria-expanded="false" aria-controls="collapseWidthExample">
@@ -160,17 +159,36 @@ const VisualizarPessoas = () => {
                                     <div >
                                         <div className="collapse collapse-horizontal" id={`collapseWidthExample_${index}`}>
                                             <div className="card card-body" style={{ background: 'none', width: '890px', textAlign: 'left' }}>
-                                                CPF: {item.documento}<br />
-                                                Tipo Sanguíneo: {item.tipo_sanguineo.tipo} {item.tipo_sanguineo.fator} <br />
-                                                Rua: {item.rua}, {item.numero}/{item.complemento}<br />
+                                                <div className="container">
+                                                    <div className="row">
+                                                        <div className="col">
+                                                            <div className="fs-5 fw-bold">CPF</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.documento}</ul>
+                                                            <div className="fs-5 fw-bold">Tipo Sanguíneo</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.tipo_sanguineo.tipo} {item.tipo_sanguineo.fator}</ul>
+                                                            <div className="fs-5 fw-bold">Rua</div>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.rua}, {item.numero}</ul>
+                                                            <ul className="fs-6 text-warning fw-bold">{item.complemento}</ul>
 
+                                                        </div>
 
-                                                {item.doacao.map(item2 => (
-                                                    <>
-                                                        {item2.id}
-                                                    </>
-                                                ))}
+                                                        <div className="col">
+                                                            <div className="fs-5 fw-bold"> Ids das Doações</div>
+                                                            {item.doacao.map(item2 => (
+                                                                <>
+                                                                    <ul>
+                                                                    <li className="fs-6 text-warning fw-bold">{item2.id}</li>
+                                                                    <div className="fs-5 fw-bold">feita em</div>
+                                                                    <ul className="fs-6 text-warning fw-bold"> {item2.created_at}</ul>
+                                                                    </ul>
+                                                                </>
+                                                            ))}
 
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

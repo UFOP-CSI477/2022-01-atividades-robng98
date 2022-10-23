@@ -4,19 +4,8 @@ import api from "../../services/api";
 
 import '../../App.css'
 
-import styled from 'styled-components';
+import { Botao, BotaoPeq, DivPrinc } from '../cadastrar/CadastraDoacao'
 
-const Botao = styled.button.attrs(() => ({
-    className: 'btn btn-danger btn-lg',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
-
-const BotaoPeq = styled.button.attrs(() => ({
-    className: 'btn btn-danger',
-}))`
-    background-color: var(--vermlar_escuro)
-`;
 
 const AtualizaLocColeta = () => {
     const tipo = 'locais_coleta';
@@ -86,11 +75,12 @@ const AtualizaLocColeta = () => {
             </p>
 
 
-            <div className="fundo-div-principal" style={{ gridRow: '3', fontSize: '18px' }}>
+            <DivPrinc>
+
 
                 {inputs.map((item) => (
                     <div>
-                        <label htmlFor={item[1].toString()}>{item[1]}</label> <br />
+                        <label htmlFor={item[1].toString()}>{item[1].toString().toUpperCase()}</label> <br />
                         <input
                             type="text"
                             name={item[1].toString()}
@@ -100,13 +90,16 @@ const AtualizaLocColeta = () => {
                             onChange={e => setProp(e.target.value.toString(), item[1].toString())} />
                     </div>
                 ))}
-                <form onSubmit={handleAtualizaLocColeta} style={{ gridColumn: '8' }}>
-                    <Botao type="submit">Atualizar</Botao>
-                </form>
-            </div>
 
-            <Link to={'/'} style={{ gridRow: '4', gridColumn: '9/11' }}>
-                <Botao>Tela Inicial</Botao>
+            </DivPrinc>
+            <form onSubmit={handleAtualizaLocColeta} style={{ gridColumn: '8', gridRowStart: '4', marginBottom: '10%', justifySelf: 'flex-end' }}>
+
+                <Botao type="submit">Atualizar</Botao>
+            </form>
+
+            <Link to={'/'} style={{ gridRowEnd: '6', gridColumn: '8', justifySelf: 'flex-end' }}>
+
+                <BotaoPeq>Tela Inicial</BotaoPeq>
 
             </Link>
 
