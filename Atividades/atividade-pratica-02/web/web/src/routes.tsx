@@ -4,12 +4,14 @@ import AtualizaDoacao from "./components/atualizar/AtualizaDoacao";
 import AtualizaLocColeta from "./components/atualizar/AtualizaLocColeta";
 import AtualizaPessoa from "./components/atualizar/AtualizaPessoa";
 import AtualizaTpSang from "./components/atualizar/AtualizaTpSang";
-import Busca from "./components/buscar/busca";
+import BuscaId from "./components/buscar/BuscaId";
+import BuscaNome from "./components/buscar/BuscaNome";
 import CadastraDoacao from "./components/cadastrar/CadastraDoacao";
 import CadastraLocColeta from "./components/cadastrar/CadastraLocColeta";
 import CadastraPessoas from "./components/cadastrar/CadastraPessoa";
 import CadastraTpSang from "./components/cadastrar/CadastraTpSang";
 import Header from "./components/header/Header";
+import Invalido from "./components/invalido/invalido";
 import VisualizarDoacoes from "./components/visualizar/VisualizarDoacoes";
 import VisualizarLocColeta from "./components/visualizar/VisualizarLocColeta";
 import VisualizarPessoas from "./components/visualizar/VisualizarPessoas";
@@ -38,16 +40,23 @@ const AppRoutes = () => {
                 <Route path="/update/tipos_sanguineos" element={<AtualizaTpSang />} />
                 <Route path="/update/locais_coleta" element={<AtualizaLocColeta />} />
 
-                <Route path="/b_:categ/:tipo/:busca" element={<Busca />} />
+                <Route path="/b_:categ/Id/:busca" element={<BuscaId />} />
+                <Route path="/b_:categ/Nome/:busca" element={<BuscaNome />} />
 
 
+                <Route path="/b_invalid" element={<Invalido />} />
+                <Route path="/b_//"element={<Invalido />} />
+                <Route path="/b_/Id/" element={<Invalido />} />
+                <Route path="/b_/Nome/" element={<Invalido />} />
+                <Route path="/b_:categ/Id/" element={<Invalido />} />
+            
+                <Route path="/b_/Id/:busca" element={<Invalido />} />
+                <Route path="/b_:categ/Nome/" element={<Invalido />} />
+                <Route path="/b_/Nome/:busca" element={<Invalido />} />
 
-                {/* <Route path="/b_:tipo/:busca" element={<ResultBusca/>}/>
-                <Route path="/:tipo/:serie/:vol" element={<TelaSerie/>}></Route> */}
             </Routes>
 
-
-        </BrowserRouter>
+        </BrowserRouter >
     )
 }
 

@@ -6,9 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--cinza_escuro) !important;
-  /* background-image: url("../public/droplet-half.svg"); */
-  background-size: cover;
-  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-image: url("../public/droplet-half.svg");
+  background-size: 1050px;
+  background-blend-mode: soft-light;
+  background-position: right;
+  background-attachment: fixed;
 
 }
 

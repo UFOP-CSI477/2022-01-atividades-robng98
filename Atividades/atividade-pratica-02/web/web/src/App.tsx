@@ -8,58 +8,27 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
 	return (
-		<div className="App">
 
-			<div className="fundo-div-principal" style={{ gridRow: '3', gridColumn: '3/11', marginBottom: '3%' }}>
 
-				<div className="logotipo-home">
-			
-					<img width="150" height="150" src="/droplet-half.svg" />
-					<h1 style={{ fontSize: 'var(--font-sz-maxx)', fontFamily: 'var(--font_logo)' }}>Atv Pratica 2</h1>
-				</div>
+		<div className="d-flex flex-column justify-content-center rounded-circle border border-5 border-warning position-absolute 
+			start-50 top-50 translate-middle d-flex " style={{ height: '700px', width: '700px', background: 'var(--cinza_claro)' }}>
 
-				<div id="carouselExampleCaptions" className="carousel slide d-block w-50" data-bs-ride="false">
-					<div className="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-					</div>
-					<div className="carousel-inner">
-						<div className="carousel-item active">
-							<img src="/teste1.png" className="d-block w-100" alt="..." />
-							<div className="carousel-caption d-none d-md-block">
-								<h5>First slide label</h5>
-								<p>Some representative placeholder content for the first slide.</p>
-							</div>
-						</div>
-						<div className="carousel-item">
-							<img src="/teste2.png" className="d-block w-100" alt="..." />
-							<div className="carousel-caption d-none d-md-block">
-								<h5>Second slide label</h5>
-								<p>Some representative placeholder content for the second slide.</p>
-							</div>
-						</div>
-						<div className="carousel-item">
-							<img src="/teste3.png" className="d-block w-100" alt="..." />
-							<div className="carousel-caption d-none d-md-block">
-								<h5>Third slide label</h5>
-								<p>Some representative placeholder content for the third slide.</p>
-							</div>
-						</div>
-					</div>
-					<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-						<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span className="visually-hidden">Previous</span>
-					</button>
-					<button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-						<span className="carousel-control-next-icon" aria-hidden="true"></span>
-						<span className="visually-hidden">Next</span>
-					</button>
-				</div>
+			<div className=" d-flex flex-column logotipo-home">
 
-				{/* </form> */}
+				<img width="120" height="120" src="/droplet-half.svg" alt="ATV PRAT 2" className="border border-5 border-danger rounded-circle p-3 me-2" />
+				<div className='border-bottom text-warning border-danger border-3 display-2' style={{ fontFamily: 'var(--font_logo)', }}>Atv Pratica 2</div>
+				<a href="https://github.com/UFOP-CSI477/2022-01-atividades-robng98" target="_blank" style={{ textDecoration: 'none' }}>
+					<div className='border-bottom text-warning border-danger mt-3 border-2 fs-5' style={{ fontFamily: 'var(--font_logo)', }}>Roberto Nicácio Guimarães</div>
+				</a>
+				<a href="https://github.com/UFOP-CSI477/2022-01-atividades-robng98" target="_blank" style={{ textDecoration: 'none' }}>
+				<div className='border-bottom text-warning border-danger mt-2 border-1 fs-6' style={{ fontFamily: 'var(--font_logo)', }}>19.1.8013 SWI</div>
+				</a>
 			</div>
+
+
 		</div>
+
+
 	);
 }
 

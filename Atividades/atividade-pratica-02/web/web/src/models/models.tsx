@@ -65,5 +65,5 @@ export interface Resultado_Busca_Model {
     tipo_sanguineo: Tipo_Sanguineo_Model
     local_coleta: Local_Coleta_Model
     doacao: Doacao_Model[]
-    pessoa: Pessoa_Model[]
+    pessoa: Pessoa_Model
 }
