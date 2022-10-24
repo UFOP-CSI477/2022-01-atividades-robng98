@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Distribuicao {
+  id         Int      @id @default(autoincrement())
+  produto_id Int
+  unidade_id Int
+  data       DateTime @default(now())
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  produto Produto @relation(fields: [produto_id], references: [id])
+  unidade Unidade @relation(fields: [unidade_id], references: [id])
+
+  @@map("distribuicoes")
+}
+
+model Produto {
+  id         Int      @id @default(autoincrement())
+  etiqueta   String
+  validade   DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  distribuicao Distribuicao[]
+
+  @@map("produtos")
+}
+
+model Unidade {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  numero      String
+  complemento String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+
+  distribuicao Distribuicao[]
+
+  @@map("unidades")
+}
