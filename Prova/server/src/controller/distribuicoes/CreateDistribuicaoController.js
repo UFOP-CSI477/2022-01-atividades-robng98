@@ -11,8 +11,8 @@ export class CreateDistribuicaoController {
 
         const distribuicao = await prismaClient.distribuicao.create({
             data: {
-                produto_id,
-                unidade_id,
+                produto_id: parseInt(produto_id),
+                unidade_id: parseInt(unidade_id),
                 data
             }
         });
