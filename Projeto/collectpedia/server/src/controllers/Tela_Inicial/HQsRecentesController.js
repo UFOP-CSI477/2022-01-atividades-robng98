@@ -11,8 +11,8 @@ export class HQsRecentesController {
                         E.un_monetaria as mon, PB.fk_editora_nome as ed_nome
             FROM EDICAO E, SERIE S, PUBLICA PB
             WHERE E.fk_serie_nome_intern = S.nome_intern AND PB.fk_serie_nome_intern = S.nome_intern
-GROUP BY	nome, vol, num, capa, mon, ed_nome
-ORDER BY 	top_recentes DESC, nome ASC, vol ASC, num ASC
+            GROUP BY	nome, vol, num, capa, mon, ed_nome
+            ORDER BY 	top_recentes DESC, nome ASC, vol ASC, num ASC
             `;
 
         return response.json(query);
