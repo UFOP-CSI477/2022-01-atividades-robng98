@@ -1,10 +1,8 @@
-import { SetStateAction, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components"
-import { TypeVariable } from "typescript";
 import { SerieEsqModel, SerieDirModel } from "../../models/Models";
 import api from "../../services/api";
-// import '../../index.css'
 
 const Botao = styled.button.attrs(() => ({
     className: 'btn btn-danger btn-lg',
@@ -53,7 +51,17 @@ const TelaSerie = () => {
     let [numero_m, setNumeroM] = useState('1')
     let data_la = []
 
+    const navigate = useNavigate()
+
+    const [addVet, setAddVet] = useState<string[]>([]);
+
+    const [dataLanc, setDataLanc] = useState<string>()
+    const [oi, setoi] = useState<string>()
+
+
+
     useEffect(() => {
+
         try {
 
             if (tipo === 'comic') {
@@ -85,25 +93,57 @@ const TelaSerie = () => {
             alert('Erro. Tente novamente');
             console.error(error);
         }
-    }, [vol, serie_sep, numero, numero_m]);
+    }, [vol, serie_sep, numero, numero_m, navigate]);
 
     const info_edicao = direita.slice(0, 1)
-    // console.log(esquerda);
-    // console.log(info_edicao)
-    // console.log(direita)
     data_la = info_edicao.map(item => (
         item.data_lanc
     )
     )
     const rel_date = data_la.toString().substring(0, 10)
-    // console.log(data_la)
+
+    // const altVet = async (check: boolean, num: string) => {
+
+    //     if (check && addVet.indexOf(num) === -1) {
+    //         setAddVet(old => [...old, num])
+
+    //     } else {
+    //         if (!check && addVet.indexOf(num) !== -1) {
+    //             setAddVet(addVet.filter(item => item !== num))
+
+    //         }
+    //     }
+
+    // }
+
+    const altVet = async (check: boolean, elem: string) => {
+
+        if (check && addVet.indexOf(elem) === -1) {
+            console.log(elem)
+            setAddVet([elem])
+        }
+
+    }
+
+    const altData = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+        setNumero(e.currentTarget.id)
+        // console.log(e.currentTarget.value)
+    }
+
+    
+    const altData_M = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+        setNumeroM(e.currentTarget.id)
+        // console.log(e.currentTarget.value)
+    }
 
 
     if (tipo === 'comic') {
         return (
             <>
-
                 <div style={{ gridRow: '4', gridColumn: '1/13', display: 'grid', gridTemplateColumns: 'repeat(12,1fr)' }}>
+
                     <div className="texto_subtit" style={{ gridColumn: '3/13', gridRow: '2/3', display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gridTemplateRows: 'auto', marginBottom: '5%' }}>
                         <div style={{ gridRow: '1', fontSize: '32px', gridColumn: '1/5' }}>{nome_serie}</div>
                         <div style={{ gridRow: '2', gridColumn: '1/4', marginLeft: '5%' }}>Editora: {editora}</div>
@@ -111,11 +151,14 @@ const TelaSerie = () => {
                         <div style={{ gridRow: '1', gridColumn: '7' }}>
                             {/* <input type="submit"
                                 name="add" id="add" value="Adicionar" className="bot-dir-inf" /> */}
-                            <Botao type="submit">Adicionar</Botao>
+                            {/* <Link to={'/addExemplar'} state={{ addVet: addVet }}>
+                                <Botao type="submit">Adicionar</Botao>
+                            </Link> */}
                         </div>
                     </div>
 
                     <div className="fundo-div-principal" style={{ overflow: 'auto', gridRow: '3/5', gridColumn: '3/8', marginRight: '20px' }}>
+
 
                         <table style={{ width: '100%', fontSize: '22px', justifySelf: 'center' }}>
                             <tbody>
@@ -123,6 +166,7 @@ const TelaSerie = () => {
                                     <th>Nome</th>
                                     <th>Nº</th>
                                     <th>Preço</th>
+                                    {/* <th>Adicionar</th> */}
                                 </tr>
                             </tbody>
                         </table>
@@ -136,12 +180,23 @@ const TelaSerie = () => {
                                         <td>
                                             {/* <a style={{color: var(--vermlar_claro)'," href="/serie/{{editora}}/{{linha[0].replace(' ', '_')}}/{{vol}}/{{linha[1]}}"
                                         style={{text-decoration: none'," > #{{ linha[1]}} </a> */}
-                                            <Botao_Peq id={item.num} onClick={e => setNumero(e.currentTarget.id)}>{item.num}</Botao_Peq>
+                                            <Botao_Peq id={item.num} onClick={e => (altData(e))}
+                                                value={`${serie}%Vol_${vol}%${item.num}%${rel_date}`} >{item.num}</Botao_Peq>
+
 
                                         </td>
                                         <td>
                                             {item.un_mon} {item.preco}
                                         </td>
+                                        {/* <td>
+                                            <td style={{ gridColumn: '12' }} className="form-check">
+
+                                                <Check value={`${serie}%Vol_${vol}%${item.num}%${rel_date}`} onChange={e => altVet(e.target.checked, e.target.value)}
+                                                    id="flexCheckDefault" />
+
+
+                                            </td>
+                                        </td> */}
                                     </tr>
                                 </tbody>
                             ))}
@@ -151,6 +206,12 @@ const TelaSerie = () => {
                     </div>
                     {info_edicao.map((item, index) => (
                         <>
+                            {console.log(item)}
+                            <div style={{ gridColumn: '9' }}>
+                                <Link to={'/addExemplar'} state={{ addVet: addVet }}>
+                                    <Botao type="submit" >Adicionar</Botao>
+                                </Link>
+                            </div>
                             <div className="fundo-div-principal" style={{ gridRow: '3', gridColumn: '8/11', margin: '0 20% 10% 20%' }}>
 
                                 <img src={item.capa} height="350px" width="240px" alt="/static/imgs_png/mk5.png" />
@@ -171,7 +232,7 @@ const TelaSerie = () => {
 
                                         <tr>
                                             <td>{item.mon} {item.preco}</td>
-                                            <td>Data de Publicação: {rel_date}</td>
+                                            <td>Data de Publicação: {item.data_lanc.substring(0, 10)} </td>
                                         </tr>
 
                                         {direita.map(item2 => (
@@ -182,6 +243,11 @@ const TelaSerie = () => {
 
                                         <tr>
                                             <td>Estado de Publicação: {item.estado_pub_atual}</td>
+                                        </tr>
+                                        <tr>
+                                            Adicionar na coleção <Check value={`${item.nome.replace(/ /g, '_')}%Vol_${item.vol}%${item.num}%${item.data_lanc.substring(0, 10)}`}
+                                                onChange={e => altVet(e.target.checked, e.target.value)}
+                                                id="flexCheckDefault" />
                                         </tr>
                                     </tbody>
                                 </table>
@@ -215,7 +281,7 @@ const TelaSerie = () => {
                             <div style={{ gridRow: '1', gridColumn: '7' }}>
                                 {/* <input type="submit"
                                     name="add" id="add" value="Adicionar" className="bot-dir-inf" /> */}
-                                <Botao type="submit">Adicionar</Botao>
+                                {/* <Botao type="submit">Adicionar</Botao> */}
                             </div>
                         </div>
 
@@ -241,17 +307,19 @@ const TelaSerie = () => {
                                             <td>
                                                 {/* <a style={{color: var(--vermlar_claro)'," href="/serie/{{editora}}/{{linha[0].replace(' ', '_')}}/{{vol}}/{{linha[1]}}"
                                             style={{text-decoration: none'," > #{{ linha[1]}} </a> */}
-                                                <Botao_Peq id={item.num} onClick={e => setNumeroM(e.currentTarget.id)}>{item.num}</Botao_Peq>
+                                                <Botao_Peq id={item.num} onClick={e => (altData_M(e))}
+                                                    value={`${serie}%Vol_${vol}%${item.num}%${rel_date}`} >{item.num}</Botao_Peq>
+
 
                                             </td>
                                             <td>
                                                 {item.un_mon} {item.preco}
                                             </td>
-                                            <td>
+                                            {/* <td>
                                                 <div className="form-check">
-                                                    <Check value="" id="flexCheckDefault"/>
+                                                    <Check value="" id="flexCheckDefault" />
                                                 </div>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     </tbody>
                                 ))}
@@ -261,6 +329,11 @@ const TelaSerie = () => {
                         </div>
                         {info_edicao.map((item, index) => (
                             <>
+                                <div style={{ gridColumn: '9', gridRow: '2' }}>
+                                    <Link to={'/addExemplar'} state={{ addVet: addVet }}>
+                                        <Botao type="submit" >Adicionar</Botao>
+                                    </Link>
+                                </div>
                                 <div className="fundo-div-principal" style={{ gridRow: '3', gridColumn: '8/11', margin: '0 20% 10% 20%' }}>
 
                                     <img src={item.capa} height="350px" width="240px" alt="/static/imgs_png/mk5.png" />
@@ -292,6 +365,15 @@ const TelaSerie = () => {
 
                                             <tr>
                                                 <td>Estado de Publicação: {item.estado_pub_atual}</td>
+                                            </tr>
+                                            <tr>
+                                                Adicionar na coleção <Check value={`${item.nome.replace(/ /g, '_')}%Vol_${vol}%${item.num}%${item.data_lanc.substring(0, 10)}`}
+                                                    onChange={e => altVet(e.target.checked, e.target.value)}
+                                                    id="flexCheckDefault" />
+
+                                                    <>
+                                                    {console.log(addVet)}
+                                                    </>
                                             </tr>
                                         </tbody>
                                     </table>

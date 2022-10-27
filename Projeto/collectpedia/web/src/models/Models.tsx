@@ -136,7 +136,7 @@ export interface ResComicMangaModel {
 }
 
 //Pagina Serie de Comic/Manga
-export interface SerieEsqModel{
+export interface SerieEsqModel {
     nome: string,
     num: string,
     un_mon: string,
@@ -144,7 +144,7 @@ export interface SerieEsqModel{
 
 }
 
-export interface SerieDirModel{
+export interface SerieDirModel {
     nome: string,
     num: string,
     mon: string,
@@ -158,4 +158,80 @@ export interface SerieDirModel{
     caps: number,
     mangaka: string
 
+}
+
+//Tela Add Exemplar Colecao
+
+export interface Colecao_Opt_Model {
+
+    count: string,
+    nome_c: string
+
+}
+
+//Tela Usuario
+
+export interface Colecoes_Model {
+    nome_c: string,
+    count: string,
+    max: string
+}
+
+export interface MesesCount_Model {
+    meses: string,
+    count: string
+}
+
+export interface CountRoteirista_Model {
+    count_roteirista: string,
+    nome_roteirista: string
+}
+
+export interface CountDesenhista_Model {
+    count_desenhista: string,
+    nome_desenhista: string
+}
+
+export interface CountMangaka_Model {
+    count_mangaka: string,
+    nome_mangaka: string
+}
+
+export interface CountDemografia_Model {
+    count_demo: string,
+    demografia: string
+}
+
+export interface CountGenero_Model {
+    genero: string,
+    top_3: string
+}
+
+export interface CountStatusPub_Model {
+    e_p: string,
+    contagem: string
+}
+
+export interface CountInfosDir_Model {
+    nome: string,
+    num_ed_col: string,
+    num_ex_col: string,
+    nome_c: string,
+    count: string,
+    max: string,
+    meses: string,
+    count_roteirista: string,
+    nome_roteirista: string,
+    count_desenhista: string,
+    nome_desenhista: string,
+    count_mangaka: string,
+    nome_mangaka: string,
+    count_demo: string,
+    demografia: string,
+    genero: string,
+    top_3: string,
+    e_p: string,
+    contagem: string,
+    novoNomeCol: string,
+    email: string
 }
