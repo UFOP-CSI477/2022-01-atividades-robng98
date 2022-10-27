@@ -9,7 +9,7 @@ export class CountDemografiaController {
         const nomeColConc = `%${nomeCol}%`
 
         const query = await prismaClient.$queryRaw`
-            SELECT	M.demografia, count(*) as contagem
+            SELECT	M.demografia, count(*) as count_demo
             FROM	manga M, serie S
             WHERE 	(S.nome_intern, M.demografia) in
             (SELECT		S.nome_intern, M.demografia
@@ -23,7 +23,7 @@ export class CountDemografiaController {
 		 			A.fk_colecao_email like ${emailConc}
 		    GROUP BY	S.nome_intern, M.demografia)
             GROUP BY M.demografia
-            ORDER BY	contagem desc, M.demografia
+            ORDER BY	count_demo desc, M.demografia
         `;
 
 

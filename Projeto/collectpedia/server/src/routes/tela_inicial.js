@@ -13,7 +13,7 @@ const hqsRecentesController = new HQsRecentesController();
 
 const authMiddleware = new AuthMiddleware();
 
-telaInicialRouter.get('/b_comic/:busca', authMiddleware.handle, buscaComicsController.handle);
+telaInicialRouter.get('/b_comic/:busca', buscaComicsController.handle);
 telaInicialRouter.get('/b_manga/:busca', buscaMangaController.handle);
 telaInicialRouter.get('/recentes', hqsRecentesController.handle);
 

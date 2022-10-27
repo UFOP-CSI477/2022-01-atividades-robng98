@@ -9,7 +9,7 @@ export class CountDesenhistaController {
         const nomeColConc = `%${nomeCol}%`
 
         const query = await prismaClient.$queryRaw`
-            SELECT	C.fk_contribuidor_nome, count(*) as contagem
+            SELECT	C.fk_contribuidor_nome nome_desenhista, count(*) as count_desenhista
             FROM	contribui C
             WHERE 	(C.fk_serie_nome_intern, C.fk_serie_ciclo_de_num, C.fk_contribuidor_nome) in
 		    (SELECT		S.nome_intern, S.ciclo_de_num, C.fk_contribuidor_nome
@@ -24,7 +24,7 @@ export class CountDesenhistaController {
 					C.funcao ilike '%Desenhista'
 	    	GROUP BY	S.nome_intern, S.ciclo_de_num, C.fk_contribuidor_nome)
             GROUP BY C.fk_contribuidor_nome
-            ORDER BY	contagem desc
+            ORDER BY	count_desenhista desc
         `;
 
 

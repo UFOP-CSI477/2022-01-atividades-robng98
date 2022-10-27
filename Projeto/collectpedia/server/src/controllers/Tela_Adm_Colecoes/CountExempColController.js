@@ -3,7 +3,7 @@ import { prismaClient } from "../../database/client.js"
 
 export class CountExempColController {
     async handle(request, response) {
-        let { email } = request.body;
+        let { email } = request.params;
         const emailConc = `%${email}%`
 
         const query = await prismaClient.$queryRaw`

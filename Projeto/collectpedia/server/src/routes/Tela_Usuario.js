@@ -7,10 +7,12 @@ import { CountRoteiristaController } from "../controllers/Tela_Usuario/CountRote
 import { CountMangakaController } from "../controllers/Tela_Usuario/CountMangakaController.js";
 import { CountDesenhistaController } from "../controllers/Tela_Usuario/CountDesenhistaController.js";
 import { CountDemografiaController } from "../controllers/Tela_Usuario/CountDemografiaController.js";
-import { CountExempMesController } from "../controllers/Tela_Usuario/CountExempMesController.js";
+import { AuthMiddleware } from "../middleware/AuthMiddleware.js"
 
 
 const telaUsuarioRouter = Router();
+const authMiddleware = new AuthMiddleware();
+
 
 const colecoesInfoController = new ColecoesInfoController();
 const statusEditNumExempController = new StatusEditNumExempController();
@@ -20,18 +22,16 @@ const countRoteiristaController = new CountRoteiristaController();
 const countMangakaController = new CountMangakaController();
 const countDesenhistaController = new CountDesenhistaController();
 const countDemografiaController = new CountDemografiaController();
-const countExempMesController = new CountExempMesController();
 
 
-telaUsuarioRouter.get('/colecoes/:email', colecoesInfoController.handle);
-telaUsuarioRouter.get('/editExemp/', statusEditNumExempController.handle);
-telaUsuarioRouter.get('/countStatusPub/', countStatusPubCController.handle);
-telaUsuarioRouter.get('/countGeneros/', countColGeneroController.handle);
-telaUsuarioRouter.get('/countRoteirista/', countRoteiristaController.handle);
-telaUsuarioRouter.get('/countMangaka/', countMangakaController.handle);
-telaUsuarioRouter.get('/countDesenhista/', countDesenhistaController.handle);
-telaUsuarioRouter.get('/countDemografia/', countDemografiaController.handle);
-telaUsuarioRouter.get('/countExempMes/', countExempMesController.handle);
+telaUsuarioRouter.get('/colecoes/:email', authMiddleware.handle, colecoesInfoController.handle);
+telaUsuarioRouter.post('/editExemp/', statusEditNumExempController.handle);
+telaUsuarioRouter.post('/countStatusPub/', countStatusPubCController.handle);
+telaUsuarioRouter.post('/countGeneros/', countColGeneroController.handle);
+telaUsuarioRouter.post('/countRoteirista/', countRoteiristaController.handle);
+telaUsuarioRouter.post('/countMangaka/', countMangakaController.handle);
+telaUsuarioRouter.post('/countDesenhista/', countDesenhistaController.handle);
+telaUsuarioRouter.post('/countDemografia/', countDemografiaController.handle);
 
 
 export { telaUsuarioRouter };

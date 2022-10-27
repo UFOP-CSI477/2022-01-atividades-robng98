@@ -12,6 +12,7 @@ export class ColecoesInfoController {
             FROM		agrega A JOIN exemplar E on (fk_exemplar_id = id)
             WHERE		A.fk_colecao_email like ${emailConc}
             GROUP BY	nome_c
+            ORDER BY    nome_c
         `;
 
 
