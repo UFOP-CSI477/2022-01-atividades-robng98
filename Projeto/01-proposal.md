@@ -38,13 +38,13 @@
 ### 4. Protótipo
 
   Páginas construídas:
-    - Página Inicial
-    - Página de resultados de busca (uma para manga, outra para comics)
-    - Página geral da série de quadrinhos pesquisada (uma para manga, outra para comics)
-    - Página de inclusão de um exemplar de uma série a uma coleção
-    - Página principal do usuário
-    - Página principal de uma coleção do usuário
-    - Página de administração de coleções do usuário (onde é possível criar, remover ou renomear coleções)
-    - Página de Login
-    - Página de Cadastro
+  - Página Inicial
+  - Página de resultados de busca (uma para manga, outra para comics)
+  - Página geral da série de quadrinhos pesquisada (uma para manga, outra para comics)
+  - Página de inclusão de um exemplar de uma série a uma coleção
+  - Página principal do usuário
+  - Página principal de uma coleção do usuário
+  - Página de administração de coleções do usuário (onde é possível criar, remover ou renomear coleções)
+  - Página de Login
+  - Página de Cadastro
 
