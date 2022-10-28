@@ -128,14 +128,12 @@ const TelaSerie = () => {
     const altData = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         setNumero(e.currentTarget.id)
-        // console.log(e.currentTarget.value)
     }
 
     
     const altData_M = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         setNumeroM(e.currentTarget.id)
-        // console.log(e.currentTarget.value)
     }
 
 
@@ -275,13 +273,9 @@ const TelaSerie = () => {
                         <div className="texto_subtit" style={{ gridColumn: '3/13', gridRow: '2/3', display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gridTemplateRows: 'auto', marginBottom: '6%' }}>
                             <div style={{ gridRow: '1', fontSize: '32px', gridColumn: '1/5' }}>{nome_serie}</div>
                             <div style={{ gridRow: '2', gridColumn: '1/4', marginLeft: '5%' }}>Nome Original: {nome_jap} Demografia: {demografia}</div>
-                            {/* <div style={{gridRow: '2', gridColumn: '1/4', marginLeft: '5%'}}>Nome Original: {{ jap }} Demografia: {{ demo }}</div> */}
                             <div style={{ gridRow: '2', gridColumn: '4/7' }}> Editora: {editora}</div>
 
-                            <div style={{ gridRow: '1', gridColumn: '7' }}>
-                                {/* <input type="submit"
-                                    name="add" id="add" value="Adicionar" className="bot-dir-inf" /> */}
-                                {/* <Botao type="submit">Adicionar</Botao> */}
+                            <div style={{ gridRow: '1', gridColumn: '7' }}>\
                             </div>
                         </div>
 
@@ -293,20 +287,17 @@ const TelaSerie = () => {
                                         <th>Nome</th>
                                         <th>Nº</th>
                                         <th>Preço</th>
-                                        <th>Add</th>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <table style={{ width: '100%', fontSize: '20px', justifySelf: 'center' }}>
-                                {/* <tbody> */}
                                 {esquerda.map((item, index) => (
                                     <tbody key={index}>
                                         <tr>
                                             <td>{item.nome}</td>
                                             <td>
-                                                {/* <a style={{color: var(--vermlar_claro)'," href="/serie/{{editora}}/{{linha[0].replace(' ', '_')}}/{{vol}}/{{linha[1]}}"
-                                            style={{text-decoration: none'," > #{{ linha[1]}} </a> */}
+                                             
                                                 <Botao_Peq id={item.num} onClick={e => (altData_M(e))}
                                                     value={`${serie}%Vol_${vol}%${item.num}%${rel_date}`} >{item.num}</Botao_Peq>
 
@@ -315,11 +306,6 @@ const TelaSerie = () => {
                                             <td>
                                                 {item.un_mon} {item.preco}
                                             </td>
-                                            {/* <td>
-                                                <div className="form-check">
-                                                    <Check value="" id="flexCheckDefault" />
-                                                </div>
-                                            </td> */}
                                         </tr>
                                     </tbody>
                                 ))}
