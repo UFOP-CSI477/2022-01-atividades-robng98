@@ -58,10 +58,10 @@ const BuscaId = () => {
     const handleHTML = (item: Resultado_Busca_Model) => {
 
 
-        // console.log(item)
+
         const index = 0
 
-        // console.log(item.etiqueta)
+        
         if (item.etiqueta !== undefined) { //PRODUTO
 
             return (
