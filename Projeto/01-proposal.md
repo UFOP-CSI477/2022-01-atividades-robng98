@@ -48,3 +48,9 @@
   - Página de Login
   - Página de Cadastro
 
+  Esboços inicias em PDF das páginas da plataforma:
+
+[ESBOCO_TELAS1-converted.pdf](https://github.com/UFOP-CSI477/2022-01-atividades-robng98/files/9884642/ESBOCO_TELAS1-converted.pdf)
+
+  
+
