@@ -8,6 +8,7 @@
 
   Collectpedia é uma plataforma catálogo, com informações gerais sobre edições de histórias em quadrinhos, tipificada para comics (quadrinhos americanos) e mangas (japoneses), algo que não é usual, dentre as opções mais populares. Caso o usuário esteja cadastrado, pode criar sub-coleções, utilizando o acervo do site, na plataforma, tendo, também, acesso a estatísticas personalizadas sobre suas coleções.
 
+
 ### 1. Funcionalidades implementadas
 
  Todas as funcionalidades citadas na proposta foram implementadas.
@@ -21,6 +22,8 @@
 
 ### 3. Outras funcionalidades implementadas
  
+---
+
 
 ### 4. Principais desafios e dificuldades
 
