@@ -33,7 +33,7 @@ const App = () => {
 
 	useEffect(() => {
 		api.get('/recentes').then(response => {
-			setRecentes(response.data.slice(1, 6));
+			setRecentes(response.data.slice(0, 5));
 		});
 
 	}, []);
