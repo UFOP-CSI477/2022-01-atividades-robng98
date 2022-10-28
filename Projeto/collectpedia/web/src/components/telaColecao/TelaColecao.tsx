@@ -40,6 +40,7 @@ export const Radio = styled.input.attrs(() => ({
 const TelaColecao = () => {
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     const nomeColecao = location.state.nomeColecao
     const email = location.state.email
@@ -179,7 +180,7 @@ const TelaColecao = () => {
         <div className="App">
 
             <p className="texto_subtit">
-                COLEÇÃO <br />
+                COLEÇÃO {nomeColecao}
 
             </p>
 
@@ -216,11 +217,16 @@ const TelaColecao = () => {
             </>
 
 
-            <form onSubmit={e => handleDeleteExemp(e)} style={{ gridColumn: '8/10', gridRow: '2' }}>
+            <form onSubmit={e => handleDeleteExemp(e)} style={{ gridColumn: '9', gridRow: '2' }}>
                <Botao  type='submit'>
                     REMOVER
                 </Botao>
             </form>
+
+            
+            <div style={{ gridRowStart: '2', gridColumn: '10' }}>
+                <Botao onClick={() => navigate(-1)}>Voltar</Botao>
+            </div>
         </ div>
     )
 }

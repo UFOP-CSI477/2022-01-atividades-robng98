@@ -105,7 +105,7 @@ const AddExemplar = () => {
         <div className="App">
 
             <p className="texto_subtit">
-                ADICIONAR EXEMPLAR à COLEÇÃO
+                ADICIONAR EXEMPLAR
             </p>
            
             <div className="fundo-div-principal" style={{ gridRow: ' 3' }}>
@@ -118,6 +118,7 @@ const AddExemplar = () => {
                                     {item.replace(/%/g, " ").replace(/_/g, ' ')}
                                 </>
                             </h5>
+                            <div className="d-flex">
                             <input type="date" id="data-aq" name="data-aq" onChange={e => setDataEscolhida(e.target.value)} required />
                             <select name="opc-nota" className="caixa-tp-busca" onChange={e => setNotaEscolhida(e.target.value)} style={{ fontSize: '16px' }} required>
                                 <option value='' selected disabled>Grades</option>
@@ -162,6 +163,7 @@ const AddExemplar = () => {
                                 ))}
 
                             </select>
+                            </div>
                         </p>
 
                     </>
@@ -172,16 +174,15 @@ const AddExemplar = () => {
 
             <form onSubmit={handleAdiciona} style={{ gridRow: '4', gridColumn: '9/11' }}>
 
-                <button type="submit" id="btvoltar"></button>
-                <label htmlFor="btvoltar" className="bot-dir-inf" >
+                <Botao type="submit">
                     Adicionar na Coleção
-                </label>
+                </Botao>
             </form>
 
 
 
             {/* <Link to={'/'} style={{ gridRow: '4', gridColumn: '7/9' }}> */}
-            <div style={{ gridRow: '4', gridColumn: '7/9' }}>
+            <div style={{ gridRow: '4', gridColumn: '8/9' }}>
                 <Botao onClick={() => navigate(-1)}>Voltar</Botao>
             </div>
             {/* </Link> */}

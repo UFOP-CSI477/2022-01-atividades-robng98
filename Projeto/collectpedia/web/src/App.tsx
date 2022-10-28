@@ -4,9 +4,15 @@ import './index.css';
 import api from './services/api';
 import { SelecaoRecentesModel } from './models/Models';
 import { useState, useEffect } from "react";
-// import { Alert, Button } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
-// import logo from './logo2.svg';
+import styled from 'styled-components';
+
+
+const Botao = styled.button.attrs(() => ({
+    className: 'btn btn-danger btn-lg',
+}))`
+    background-color: var(--vermlar_escuro)
+`;
 
 const App = () => {
 
@@ -69,7 +75,7 @@ const App = () => {
 					<p><input type="text" placeholder="Digite aqui" title="Buscar série" className="texto_busca" name="home-busca" required value={busca} onChange={e => setBusca(e.target.value)} /></p>
 
 					<br /><br />
-					<button type="submit" className="bot-buscar-home">Enviar</button>
+					<Botao type="submit">Buscar</Botao>
 
 				</form>
 			</div>

@@ -22,6 +22,12 @@ const Check = styled.input.attrs(() => ({
 }
 `;
 
+const Botao = styled.button.attrs(() => ({
+    className: 'btn btn-danger btn-lg',
+}))`
+    background-color: var(--vermlar_escuro)
+`;
+
 
 const TelaAdmColecoes = () => {
 
@@ -228,8 +234,8 @@ const TelaAdmColecoes = () => {
                 <section >Adm. Coleções </section>
             </div>
 
-            <div style={{ gridRow: '5', gridColumnEnd: '5' }}>
-                <button value={1} className="bot-opc" onClick={e => setFlagCriar(parseInt(e.currentTarget.value))} style={{ fontSize: ' 22px' }}>Criar Coleção</button>
+            <div style={{ gridRow: '5', gridColumn: '3/6' }}>
+                <Botao value={1} onClick={e => setFlagCriar(parseInt(e.currentTarget.value))} style={{ fontSize: ' 22px' }}>Criar Coleção</Botao>
             </div>
             <div className="fundo-div-principal">
                 <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '15px 0 25px 0' }}>
@@ -273,9 +279,13 @@ const TelaAdmColecoes = () => {
                 {divCriarColecao(flagCriar)}
             </>
 
-
+            <div style={{ gridRowStart: '5', gridColumn: '9' }}>
+                <Botao onClick={() => navigate(-1)}>Voltar</Botao>
+            </div>
 
         </ div>
+
+
     )
 }
 export default TelaAdmColecoes;

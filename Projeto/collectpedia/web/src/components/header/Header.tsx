@@ -3,13 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-// import { Alert } from 'react-bootstrap';
-// import Menu from '../menu/Menu'
+import styled from 'styled-components';
 
 
-// function Header(){
-
-// }
+const Botao = styled.button.attrs(() => ({
+    className: 'btn btn-danger btn-lg',
+}))`
+    background-color: var(--vermlar_escuro)
+`;
 
 interface HeaderProps {
     email?: string;
@@ -66,49 +67,10 @@ const Header = (props: HeaderProps) => {
                                 <Link className="nav-link border-bottom border-danger me-3" aria-current="page" to={'/login'}>Login</Link>
                             </span>
                         }
-                        {/* <span className="navbar-text">
-                            Navbar text with an inline element
-                        </span> */}
                     </div>
                 </div>
             </nav>
-            {/* <nav className="navbar navbar-dark navbar-expand-lg ">
-                <div className="container-fluid">
-                    <img width="45" height="45" src="/logo2.svg" alt="" />
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"> </span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link border-bottom border-warning ms-2 me-3" aria-current="page" to={'/'}>Home</Link>
-                            </li>
-                        </ul>
-
-                        <span className='navbar-text'>
-                            {email ?
-                                <>
-
-
-                                    <Link className="nav-link border-bottom border-warning ms-2 me-3" aria-current="page" to={'/'}>{email}</Link>
-
-
-                                    <Link className="nav-link border-bottom border-warning ms-2 me-3" aria-current="page" to={'/'}>Área do Usuário</Link>
-
-                                </> :
-                                <a href="/login" className="logo-dir" style={{ gridColumn: '10' }} >Logar</a>
-
-                            }
-                        </span>
-
-                     
-
-                    </div>
-
-                   
-
-                </div>
-            </nav> */}
+           
         </header >
     );
 }
