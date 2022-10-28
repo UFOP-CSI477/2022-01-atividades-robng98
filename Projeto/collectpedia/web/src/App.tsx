@@ -46,8 +46,6 @@ const App = () => {
 		}
 	})
 
-	console.log(recentes)
-
 
 
 	return (
