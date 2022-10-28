@@ -58,7 +58,6 @@ const BuscaNome = () => {
     useEffect(() => {
 
         loadData()
-        // console.log(resFinal)
 
 
     }, [delete_vet, busca, categ])
@@ -111,9 +110,6 @@ const BuscaNome = () => {
                 setDelete_vet(v_vazio)
 
                 clearClick()
-
-
-                // setResFinal(resFinal.filter(item => item.id !== parseInt(data.id)));
 
             } catch (error) {
                 window.alert("Erro ao excluir!");
