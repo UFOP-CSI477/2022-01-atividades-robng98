@@ -19,7 +19,7 @@ export class CreateAgregaExempController {
         WHERE	E.fk_edicao_nome_intern like ${nomeSerie} AND E.fk_edicao_ciclo_de_num = ${volInt}
         `;
 
-        // const maxId_ = parseInt(maxId[0].max)
+        
         console.log(`maxId[0].max = ${parseInt(maxId[0].max)}`)
 
         const insertAgrega = await prismaClient.agrega.create({
@@ -30,7 +30,7 @@ export class CreateAgregaExempController {
             }
         })
 
-        // console.log(`Insert nomeSerie, email, nomeCol, vol = ${nomeSerie}, ${email},${nomeCol},${volInt}`)
+        
 
         return response.json(insertAgrega)
     }

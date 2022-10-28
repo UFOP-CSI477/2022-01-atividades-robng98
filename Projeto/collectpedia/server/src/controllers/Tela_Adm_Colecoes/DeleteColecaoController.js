@@ -37,6 +37,6 @@ export class DeleteColecaoController {
             })
         }
 
-        // return response.json(deleteAllExempCol, deleteColecao);
+        
     }
 }

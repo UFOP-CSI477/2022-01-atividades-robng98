@@ -40,8 +40,6 @@ export class BuscaComicsController {
             ORDER BY NOME ASC, VOL ASC, NUM_EDICOES ASC
         `;
 
-        // const query = await prismaClient.$queryRaw`select * from edicao`;
-
         return response.json(query);
     }
 }

@@ -10,10 +10,10 @@ export class CreateExempColController {
         const data_lanc_ = new Date(data_lanc).toISOString()
         const data_aqui_ = new Date(data_aqui).toISOString()
 
-        // console.log(request.body)
+        
 
         let { email, nomeCol} = request.body;
-        // const volInt = parseInt(vol)
+        
         console.log(`Add volInt, nomeSerie, est_conserv, edNum, data_aqui, data_lanc = ${volInt}, ${nomeSerie},${est_conserv},${edNum},${data_aqui_},${data_lanc_}`)
 
         const addExemplar = await prismaClient.exemplar.create({
@@ -34,7 +34,7 @@ export class CreateExempColController {
         WHERE	E.fk_edicao_nome_intern like ${nomeSerie} AND E.fk_edicao_ciclo_de_num = ${volInt}
         `;
 
-        // const maxId_ = parseInt(maxId[0].max)
+        
         console.log(`maxId[0].max = ${parseInt(maxId[0].max)}`)
         console.log(`Insert nomeSerie, email, nomeCol, vol = ${nomeSerie}, ${email},${nomeCol},${volInt}`)
 
@@ -46,9 +46,12 @@ export class CreateExempColController {
                 fk_exemplar_id: maxId[0].max
             }
         })
-        // console.log(`Add${response.body} `)
+        
 
 
-        return response.json(addExemplar)
+        return response.json({
+            ExemplarAdicionado: addExemplar,
+            ExemplarAgregado: insertAgrega
+        })
     }
 }
