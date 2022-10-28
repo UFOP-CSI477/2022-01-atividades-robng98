@@ -99,7 +99,7 @@ const TelaColecao = () => {
 
     const handleEdFalt = (item: ColecaoVolEdicoes_Model) => {
         const falt = edFaltantes.find(elem => ((elem.nome === item.nome)))
-        // console.log(falt)
+        
 
         if (falt !== undefined) {
 

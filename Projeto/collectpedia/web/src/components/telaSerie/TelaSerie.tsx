@@ -27,9 +27,6 @@ const Check = styled.input.attrs(() => ({
 `;
 
 
-// const T_Sub = styled.texto_subtit`
-// grid-column: 3/13', grid-row: 2/3', display: grid', grid-template-columns: repeat(10,1fr)', grid-template-rows: auto', margin-bottom: 5%
-// ` sd
 
 const TelaSerie = () => {
 
@@ -55,9 +52,6 @@ const TelaSerie = () => {
 
     const [addVet, setAddVet] = useState<string[]>([]);
 
-    const [dataLanc, setDataLanc] = useState<string>()
-    const [oi, setoi] = useState<string>()
-
 
 
     useEffect(() => {
@@ -67,24 +61,24 @@ const TelaSerie = () => {
             if (tipo === 'comic') {
                 api.get(`/c/${serie_sep}/${vol}`).then(response => {
                     setEsquerda(response.data);
-                    // console.log(numero)
+                    
 
                 });
                 api.get(`/single/${serie_sep}/${vol}/${numero}`).then(response => {
                     setDireita(response.data);
-                    // console.log(numero)
+                    
 
                 });
             } else {
                 if (tipo === 'manga') {
                     api.get(`/m/${serie_sep}/${vol}`).then(response => {
                         setEsquerda(response.data);
-                        // console.log(numero)
+                        
 
                     });
                     api.get(`/tanko/${serie_sep}/${vol}/${numero_m}`).then(response => {
                         setDireita(response.data);
-                        // console.log(numero)
+                        
 
                     });
                 }
@@ -102,19 +96,19 @@ const TelaSerie = () => {
     )
     const rel_date = data_la.toString().substring(0, 10)
 
-    // const altVet = async (check: boolean, num: string) => {
+    
 
-    //     if (check && addVet.indexOf(num) === -1) {
-    //         setAddVet(old => [...old, num])
+    
+    
 
-    //     } else {
-    //         if (!check && addVet.indexOf(num) !== -1) {
-    //             setAddVet(addVet.filter(item => item !== num))
+    
+    
+    
 
-    //         }
-    //     }
+    
+    
 
-    // }
+    
 
     const altVet = async (check: boolean, elem: string) => {
 

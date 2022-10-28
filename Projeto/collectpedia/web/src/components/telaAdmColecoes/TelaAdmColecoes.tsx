@@ -71,10 +71,6 @@ const TelaAdmColecoes = () => {
             }
         }
 
-        const data = {
-            email: email_,
-        }
-
         api.get(`/admCol/countExempColecao/${email_}`, config).then(response => {
             setColecoes(response.data)
         })
@@ -199,7 +195,7 @@ const TelaAdmColecoes = () => {
                         </section>
 
 
-                        {/* <form action="/criar_colecao" method="post" style={{ gridRow: '2/4', gridColumn: '1/13', display: 'grid', gridTemplateColumns: 'repeat(12,1fr)', gridTemplateRows: 'repeat(2,1fr)' }}> */}
+
                         <section style={{ gridRow: '2', gridColumn: '1/8' }}>
                             <input type="text" name="editar_nome_colecao" onChange={e => setNomeNew(e.target.value)}
                                 placeholder="Nome da coleção" value={nomeNew} className="texto_busca" />
@@ -212,7 +208,7 @@ const TelaAdmColecoes = () => {
                                     className="bot-buscar-home" />
                             </section>
                         </form>
-                        {/* </form> */}
+
 
                     </div>
                 </>

@@ -38,7 +38,7 @@ const App = () => {
 
 	}, []);
 
-	// console.log(recentes)
+	
 	const un_mons = recentes.map(item => (
 		item.mon
 	))

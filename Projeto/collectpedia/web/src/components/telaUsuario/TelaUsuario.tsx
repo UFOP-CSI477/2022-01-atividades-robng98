@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
-import { SerieEsqModel, SerieDirModel, ColecaoModel, Colecoes_Model, CountInfosDir_Model, NomeUser_Model } from "../../models/Models";
+import { Colecoes_Model, CountInfosDir_Model, NomeUser_Model } from "../../models/Models";
 import api from "../../services/api";
 
 const Botao = styled.button.attrs(() => ({
@@ -27,9 +27,9 @@ const Check = styled.input.attrs(() => ({
 `;
 
 
-// const T_Sub = styled.texto_subtit`
-// gridColumn: 3/13', gridRow: 2/3', display: grid', gridTemplateColumns: repeat(10,1fr)', gridTemplateRows: auto', margin-bottom: 5%
-// ` sd
+
+
+
 interface TelaUserProps {
     email?: string;
 }
@@ -37,8 +37,6 @@ interface TelaUserProps {
 const TelaUsuario = (props: TelaUserProps) => {
 
     const email = props.email
-
-    const { serie } = useParams();
 
     const [nomeUser, setNomeUser] = useState<NomeUser_Model[]>([])
     const [colecao, setColecao] = useState<string>()

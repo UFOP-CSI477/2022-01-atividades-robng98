@@ -16,7 +16,7 @@ interface HeaderProps {
     email?: string;
 }
 
-// const Header = (props: HeaderProps) => {
+
 const Header = (props: HeaderProps) => {
 
     const [email, setEmail] = useState<string | undefined>('')

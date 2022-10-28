@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 import { Colecao_Opt_Model, ResComicMangaModel } from "../../models/Models";
 import api from "../../services/api";
-// import "./resultBusca.css";
 import '../../App.css'
 
 import styled from 'styled-components';
@@ -14,7 +13,7 @@ const Botao = styled.button.attrs(() => ({
 `;
 
 const AddExemplar = () => {
-    // const { vet } = useParams();
+
 
     const location = useLocation()
 
@@ -46,21 +45,11 @@ const AddExemplar = () => {
             }
         }
 
-        // const data = {
-        //     email: email
-        // }
-
-        // try {
+        
             api.get(`/admCol/countExempColecao/${email}`, config).then(response => {
                 console.log(response.data)
                 setColecoes(response.data)
             })
-
-            // console.log()
-        // } catch (error) {
-        //     alert('Erro ao cadastrar o estado. Tente novamente');
-        //     console.error(error)
-        // }
 
     }, [email, navigate]);
 
@@ -68,7 +57,7 @@ const AddExemplar = () => {
         e.preventDefault()
 
         let vetParam = addVet[0].replace(/%/g, " ").split(' ')
-        // console.log(vetParam)
+        
         const data = {
             email: email,
             nomeSerie: vetParam[0].replace(/_/g, ' '),
@@ -79,19 +68,19 @@ const AddExemplar = () => {
             edNum: vetParam[2],
             est_conserv: notaEscolhida
         }
-        // console.log(data)
+        
 
 
         try {
             api.post('/addExempColecao', data).then(response => {
                 console.log(response.data)
             })
-            // api.post('/agregaExempColecao', data).then(response => {
-            //     console.log(response.data)
-            // })
+            
+            
+            
             vetParam = ['']
             navigate('/')
-            // console.log()
+            
         } catch (error) {
             alert('Erro ao cadastrar o estado. Tente novamente');
             console.error(error)
@@ -181,16 +170,16 @@ const AddExemplar = () => {
 
 
 
-            {/* <Link to={'/'} style={{ gridRow: '4', gridColumn: '7/9' }}> */}
+            
             <div style={{ gridRow: '4', gridColumn: '8/9' }}>
                 <Botao onClick={() => navigate(-1)}>Voltar</Botao>
             </div>
-            {/* </Link> */}
+            
 
         </div>
 
 
-        // </div >
+        
     )
 
 

@@ -53,12 +53,9 @@ const Login = () => {
             <p className="texto_subtit">
                 LOGAR NA CONTA
             </p>
-            {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12,1fr)', gridColumn: '4/10', gridRow: '3' }}> */}
+            
 
                 <div className="fundo-div-principal" style={{ gridRow: '3', padding: '25px 20px 30px 30px' }}>
-
-
-
 
 
                     <p> <input type="email" placeholder="Email" name="email" className="texto_busca"
@@ -75,7 +72,7 @@ const Login = () => {
                     <input type="submit" name="acao" value="Entrar" className="bot-buscar-home"/>
                 </form>
             </div>
-        // </div>
+        
     )
 }
 

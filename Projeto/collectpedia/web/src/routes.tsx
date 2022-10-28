@@ -9,7 +9,6 @@ import TelaAdmColecoes from "./components/telaAdmColecoes/TelaAdmColecoes";
 import TelaColecao from "./components/telaColecao/TelaColecao";
 import TelaSerie from "./components/telaSerie/TelaSerie";
 import TelaUsuario from "./components/telaUsuario/TelaUsuario";
-// import ResultBusca from "./components/resultBusca/ResultBusca";
 
 const AppRoutes = () => {
 
