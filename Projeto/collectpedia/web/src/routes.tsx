@@ -6,6 +6,7 @@ import Login from "./components/login/Login";
 import ResultBusca from "./components/resultBusca/ResultBusca";
 import SignUp from "./components/signup/Signup";
 import TelaAdmColecoes from "./components/telaAdmColecoes/TelaAdmColecoes";
+import TelaColecao from "./components/telaColecao/TelaColecao";
 import TelaSerie from "./components/telaSerie/TelaSerie";
 import TelaUsuario from "./components/telaUsuario/TelaUsuario";
 // import ResultBusca from "./components/resultBusca/ResultBusca";
@@ -28,6 +29,7 @@ const AppRoutes = () => {
                 <Route path="/addExemplar" element={<AddExemplar />} />
                 <Route path="/usuario" element={<TelaUsuario email={email}/>}/>
                 <Route path="/admColecoes" element={<TelaAdmColecoes />}/>
+                <Route path="/colecao" element={<TelaColecao />}/>
 
             </Routes>
 
