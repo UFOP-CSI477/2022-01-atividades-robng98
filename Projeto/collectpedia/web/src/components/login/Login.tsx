@@ -34,7 +34,7 @@ const Login = () => {
                     window.localStorage.setItem('email', email);
 
                     console.log(response.data);
-                    navigate('/');
+                    navigate('/usuario');
                     window.location.reload()
 
                 })
