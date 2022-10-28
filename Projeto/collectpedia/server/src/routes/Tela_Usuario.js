@@ -7,6 +7,7 @@ import { CountRoteiristaController } from "../controllers/Tela_Usuario/CountRote
 import { CountMangakaController } from "../controllers/Tela_Usuario/CountMangakaController.js";
 import { CountDesenhistaController } from "../controllers/Tela_Usuario/CountDesenhistaController.js";
 import { CountDemografiaController } from "../controllers/Tela_Usuario/CountDemografiaController.js";
+import { NomeUserController } from "../controllers/Tela_Usuario/NomeUserController.js";
 import { AuthMiddleware } from "../middleware/AuthMiddleware.js"
 
 
@@ -22,6 +23,7 @@ const countRoteiristaController = new CountRoteiristaController();
 const countMangakaController = new CountMangakaController();
 const countDesenhistaController = new CountDesenhistaController();
 const countDemografiaController = new CountDemografiaController();
+const nomeUserController = new NomeUserController();
 
 
 telaUsuarioRouter.get('/colecoes/:email', authMiddleware.handle, colecoesInfoController.handle);
@@ -32,6 +34,7 @@ telaUsuarioRouter.post('/countRoteirista/', countRoteiristaController.handle);
 telaUsuarioRouter.post('/countMangaka/', countMangakaController.handle);
 telaUsuarioRouter.post('/countDesenhista/', countDesenhistaController.handle);
 telaUsuarioRouter.post('/countDemografia/', countDemografiaController.handle);
+telaUsuarioRouter.get('/nomeUser/:email', nomeUserController.handle);
 
 
 export { telaUsuarioRouter };

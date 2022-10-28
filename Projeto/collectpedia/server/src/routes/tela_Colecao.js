@@ -13,10 +13,10 @@ const exempSerieController = new ExempSerieController();
 const deleteExempColController = new DeleteExempColController();
 
 
-telaColecaoRouter.get('/colecao/edicoesColecao', countEdicoesColController.handle);
-telaColecaoRouter.get('/colecao/countEdFaltColecao', countEdFaltColController.handle);
-telaColecaoRouter.get('/colecao/exempSerie', exempSerieController.handle);
-telaColecaoRouter.get('/colecao/deleteExemplar', deleteExempColController.handle);
+telaColecaoRouter.post('/colecao/edicoesColecao', countEdicoesColController.handle);
+telaColecaoRouter.post('/colecao/countEdFaltColecao', countEdFaltColController.handle);
+telaColecaoRouter.post('/colecao/exempSerie', exempSerieController.handle);
+telaColecaoRouter.post('/colecao/deleteExemplar', deleteExempColController.handle);
 
 
 export { telaColecaoRouter };

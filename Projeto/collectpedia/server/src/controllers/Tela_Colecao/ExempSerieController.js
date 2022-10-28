@@ -12,7 +12,8 @@ export class ExempSerieController {
 
 
         const query = await prismaClient.$queryRaw`
-            SELECT		E.fk_edicao_nome_intern as nome, E.fk_edicao_ciclo_de_num as vol, E.fk_edicao_numero as num, E.data_aquis as dt, E.estado_conserv as e_c
+            SELECT		E.fk_edicao_nome_intern as nome, E.fk_edicao_ciclo_de_num as vol, 
+            E.fk_edicao_numero as num, E.data_aquis as dt, E.estado_conserv as e_c, E.id as id
             FROM		agrega A, exemplar E, edicao ED
             WHERE		fk_exemplar_id = id AND 
                         ( ED.numero, ED.data_lanc, ED.fk_serie_nome_intern,ED.fk_serie_ciclo_de_num ) =
@@ -22,7 +23,7 @@ export class ExempSerieController {
                         E.fk_edicao_nome_intern like ${nomeSerieConc} AND
                         E.fk_edicao_ciclo_de_num = ${volInt}
 
-            ORDER BY	nome ASC, vol ASC, num ASC , dt ASC , e_c DESC
+            ORDER BY	nome ASC, vol ASC, num ASC , dt ASC , e_c DESC, id ASC
                 
         `;
 
