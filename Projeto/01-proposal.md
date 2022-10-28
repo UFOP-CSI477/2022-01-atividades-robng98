@@ -32,7 +32,7 @@
 <!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
 
-  Toda parte de manutenção do catálogo do site, adicionar/remover/editar entradas, fica fora do escopo apresentado na plataforma. O administrador deve fazé-lo via SGB ou ferramentas similares.
+  Toda parte de manutenção do catálogo do site, adicionar/remover/editar entradas, fica fora do escopo apresentado na plataforma. O administrador deve fazé-lo via SGBD ou ferramentas similares.
 
 <!-- Construir alguns protótipos para a aplicação, disponibilizá-los no Github e descrever o que foi considerado. //-->
 ### 4. Protótipo
