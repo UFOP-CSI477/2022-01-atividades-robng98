@@ -6,7 +6,7 @@ export class DeleteDoacaoController {
     async handle(request, response) {
 
         let { id } = request.body.data;
-        // console.log(id);
+        
         id = parseInt(id);
 
         try{

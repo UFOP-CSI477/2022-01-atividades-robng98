@@ -2,7 +2,7 @@ import { prismaClient } from "../../database/client.js";
 
 export class CreateDoacaoController {
 
-   // async/await 
+   
    async handle( request, response ) {
 
         const { pessoa_id, local_id } = request.body;
@@ -13,7 +13,7 @@ export class CreateDoacaoController {
                 local_id
             }
         });
-        // console.log(doacao);
+        
         return response.json(doacao);
 
    } 
