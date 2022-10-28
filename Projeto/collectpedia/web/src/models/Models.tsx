@@ -235,3 +235,24 @@ export interface CountInfosDir_Model {
     novoNomeCol: string,
     email: string
 }
+
+export interface NomeUser_Model {
+    username: string
+}
+
+//Tela Colecao
+
+export interface ColecaoVolEdicoes_Model {
+    nome: string,
+    vol: number,
+    num: string
+}
+
+export interface ExempSerie_Model{
+    nome: string,
+    vol: number,
+    num: string,
+    dt: string,
+    e_c: string,
+    id: number
+}
