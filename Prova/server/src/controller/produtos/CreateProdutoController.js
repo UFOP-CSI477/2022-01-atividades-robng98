@@ -2,7 +2,7 @@ import { prismaClient } from "../../database/client.js";
 
 export class CreateProdutoController {
 
-    // async/await 
+    
     async handle(request, response) {
 
         const { etiqueta, validade } = request.body;
