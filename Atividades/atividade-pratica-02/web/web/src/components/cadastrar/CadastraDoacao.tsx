@@ -89,11 +89,6 @@ const CadastraDoacao = () => {
                                 placeholder={item[1].toString()}
                                 value={item[0]}
                                 onChange={e => setProp(parseInt(e.target.value), item[1].toString())} />
-                            {/* <select className="form-select form-select-yellow me-2" style={{ width: '100px' }} required>
-                                <option selected disabled>Tipo</option>
-                                <option value="Id">Id</option>
-                                <option value="Nome">Nome</option>
-                            </select> */}
                         </p>
                     </div>
                 ))}
