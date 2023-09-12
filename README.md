@@ -9,6 +9,7 @@
 - Semestre/Ano correntes: 2022/1
 - Link para o seu GitHub: [https://github.com/robng98](https://github.com/robng98)
 
-## [Projeto final:](./Projeto/README.md)
+## Projeto final:
 
-Apresente uma breve descrição do seu projeto.
+[COLLECTPEDIA](https://github.com/UFOP-CSI477/2022-01-atividades-robng98/tree/master/Projeto)
+- A aplicação desenvolvida é uma plataforma de consulta de informações sobre histórias e quadrinhos, e sua catalogação em coleções, caso usuário cadastrado da plataforma.
